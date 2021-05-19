@@ -2,18 +2,24 @@ package covid.project.service;
 
 import covid.project.model.Booking;
 import covid.project.repo.BookingInter;
+import covid.project.repo.BookingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
 public class BookingService implements BookingServiceInter {
-    BookingInter bookingInter;
+    @Autowired
+    BookingRepo bookingRepo;
+
+    @Override
     public int addBooking(Booking booking) {
-        return bookingInter.addBooking(booking);
+        return bookingRepo.addBooking(booking);
     }
+    @Override
     public List<Booking> fetchAll() {
-        return bookingInter.fetchAll();
+        return bookingRepo.fetchAll();
     }
-    public Booking findBookingById(int bookID){return bookingInter.findBookingById(bookID);}
+    @Override
+    public Booking findBookingById(int bookID){return bookingRepo.findBookingById(bookID);}
 }
