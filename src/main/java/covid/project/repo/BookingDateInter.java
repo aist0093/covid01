@@ -1,4 +1,4 @@
 package covid.project.repo;
 
-public interface BookingDateInter {
+public interface    BookingDateInter {
 }
