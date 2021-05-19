@@ -1,13 +1,13 @@
-package covid.project.repo;
+package covid.project.service;
 
 import covid.project.model.Booking;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 
 import java.util.List;
 
-public interface BookingInter {
+@Component
+public interface BookingServiceInter {
+
     public int addBooking(Booking booking);
     public List<Booking> fetchAll();
     public Booking findBookingById(int bookID);
