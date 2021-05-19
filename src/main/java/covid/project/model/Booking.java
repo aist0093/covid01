@@ -15,8 +15,7 @@ public class Booking {
 
     // Constructors
 
-    public Booking() {
-    }
+    public Booking() {}
     public Booking(int bookID, int clientID, String type, boolean result, int dateID) {
         this.bookID = bookID;
         this.clientID = clientID;

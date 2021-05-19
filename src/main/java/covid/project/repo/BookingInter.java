@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 public interface BookingInter {
-    public int addBooking(Booking booking);
-    public List<Booking> fetchAll();
-    public Booking findBookingById(int bookID);
+     int addBooking(Booking booking);
+     List<Booking> fetchAll();
+     Booking findBookingById(int bookID);
 }
