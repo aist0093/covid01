@@ -3,7 +3,6 @@ package covid.project.controller;
 import covid.project.model.Booking;
 import covid.project.model.Client;
 import covid.project.model.ClientInfo;
-import covid.project.service.BookingService;
 import covid.project.service.BookingServiceInter;
 import covid.project.service.ClientInfoServiceInter;
 import covid.project.service.ClientServiceInter;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -28,6 +26,9 @@ public class HomeController {
     public String Index(){
         return "index";
     }
+
+    @GetMapping("/loginPage")
+    public String login(){ return "loginPage"; }
 
     @GetMapping("/bookingPage")
     public String Home(Model model){
