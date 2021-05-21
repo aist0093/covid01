@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ClientInfo view</title>
+</head>
+<body>
+<h1>Show me ClientInfo</h1>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for cpr..">
+<table id="myTable">
+    <tr class="header">
+        <thead>
+        <tr>
+            <th>Cpr</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="clientinfo :${clientInfoTable}">
+            <td th:text="${clientinfo.cpr}"></td>
+            <td th:text="${clientinfo.first_Name}"></td>
+            <td th:text="${clientinfo.last_Name}"></td>
+
+
+
+        </tr>
+        </tbody>
+
+
+</table>
+<script>
+    function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>
