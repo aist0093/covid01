@@ -21,5 +21,7 @@ public class BookingService implements BookingServiceInter {
         return bookingRepo.fetchAll();
     }
     @Override
-    public Booking findBookingById(int bookID){return bookingRepo.findBookingById(bookID);}
+    public Booking findBookingById(int bookID) {
+        return bookingRepo.findBookingById(bookID);
+    }
 }
