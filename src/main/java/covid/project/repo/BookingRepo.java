@@ -14,6 +14,7 @@ public class BookingRepo implements BookingInter{
     @Autowired
     JdbcTemplate template;
     @Override
+
     public int addBooking(Booking booking) {
         String sql = "INSERT INTO booking VALUES(?,?,?,?,?)";
         return template.update(sql,null, 1, "Vaccine", null, 1 );

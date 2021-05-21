@@ -1,12 +1,11 @@
 package covid.project.repo;
 
+import covid.project.model.Booking;
 import covid.project.model.BookingDate;
-
 
 import java.util.List;
 
-public interface BookingDateInter {
-    long addBookingDate(BookingDate bookingDate);
+public interface    BookingDateInter {
     List<BookingDate> fetchAll();
-    BookingDate findBookingDateByID(int DateID);
+    BookingDate findBookingDateById(int dateID);
 }
