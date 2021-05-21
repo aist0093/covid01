@@ -14,7 +14,7 @@ public class ClientInfo {
     public ClientInfo() {
     }
 
-    public ClientInfo(long cpr, String first_name, String lastName) {
+    public ClientInfo(long cpr, String first_name, String last_name) {
         this.cpr = cpr;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -31,5 +31,5 @@ public class ClientInfo {
 
     public String getLast_Name() { return last_name; }
 
-    public void setLast_Name(String last_Name) { this.last_name = last_name; }
+    public void setLast_Name(String last_name) { this.last_name = last_name; }
 }
