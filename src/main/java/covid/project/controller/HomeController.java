@@ -1,12 +1,10 @@
 package covid.project.controller;
 
 import covid.project.model.Booking;
+import covid.project.model.BookingDate;
 import covid.project.model.Client;
 import covid.project.model.ClientInfo;
-import covid.project.service.BookingService;
-import covid.project.service.BookingServiceInter;
-import covid.project.service.ClientInfoServiceInter;
-import covid.project.service.ClientServiceInter;
+import covid.project.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +21,8 @@ public class HomeController {
     ClientInfoServiceInter clientInfoServiceInter;
     @Autowired
     ClientServiceInter clientServiceInter;
+    @Autowired
+    BookingDateServiceInter bookingDateServiceInter;
 
     @GetMapping("/")
     public String Index(){
@@ -49,6 +49,10 @@ public class HomeController {
         model.addAttribute("clientTable", clientList);
         List<Booking> bookingList = bookingServiceInter.fetchAll();
         model.addAttribute("bookingsTable", bookingList);
+        List<BookingDate> bookingDateList = bookingDateServiceInter.fetchAll();
+        model.addAttribute("bookingDatesTable", bookingDateList);
+        List<ClientInfo> clientInfoList = clientInfoServiceInter.fetchAll();
+        model.addAttribute("clientInfosTable", clientInfoList);
         return "clientPage";
     }
 

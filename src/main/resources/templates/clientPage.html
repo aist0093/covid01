@@ -8,21 +8,46 @@
 <h1>Show me clients</h1>
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
 
-<table id="myTable" class="table table-striped table-bordered table-responsive" role="grid">
+<table>
   <thead>
-  <th>ClientID</th>
-  <th>CPR</th>
   <th>BookID</th>
   <th>Result</th>
+  <th>ClientID</th>
+  <th>CPR</th>
+  <th>Booking date</th>
+  <th>Full name</th>
+
+
 
 
   </thead>
   <tbody>
-  <tr role="row" class="odd" th:each="booking : ${bookingsTable}">
-    <td>
-      <p th:each="client : ${clientTable}" th:if="(${client.clientID} == ${booking.bookID})" th:text="${client.cpr}"></p>
-    </td>
+  <tr th:each="booking : ${bookingsTable}">
+    <td th:text="${booking.bookID}" ></td>
     <td th:text="${booking.result}"></td>
+
+    <td th:each="client : ${clientTable}"
+         th:if="(${client.clientID} == ${booking.clientID})"
+         th:text="${client.clientID}">
+    </td>
+    <td th:each="client : ${clientTable}"
+         th:if="(${client.clientID} == ${booking.clientID})"
+         th:text="${client.cpr}">
+    </td>
+    <td th:each="bookingDate : ${bookingDatesTable}"
+        th:if="(${bookingDate.dateID} == ${booking.dateID})"
+        th:text="${bookingDate.date +' '+ bookingDate.time}">
+    </td>
+    <td th:each="client : ${clientTable}"
+        th:if="(${client.clientID} == ${booking.clientID})">
+        <p th:each="clientInfo : ${clientInfosTable}"
+           th:if="(${clientInfo.cpr} == ${client.cpr})"
+           th:text="${clientInfo.first_Name + ' ' + clientInfo.last_Name}"
+           >
+           <p/>
+
+    </td>
+
   </tr>
   </tbody>
 </table>
