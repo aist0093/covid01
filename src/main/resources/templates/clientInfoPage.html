@@ -2,23 +2,23 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>ClientInfo view</title>
+    <title>booking view</title>
 </head>
 <body>
-<h1>Show me ClientInfo</h1>
+<h1>Show me bookings</h1>
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for cpr..">
 <table id="myTable">
     <tr class="header">
         <thead>
         <tr>
-            <th>Cpr</th>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th>CPR</th>
+            <th>FIRST NAME</th>
+            <th>lAST NAME</th>
 
         </tr>
         </thead>
         <tbody>
-        <tr th:each="clientinfo :${clientInfoTable}">
+        <tr th:each="clientinfo : ${clientInfoTable}">
             <td th:text="${clientinfo.cpr}"></td>
             <td th:text="${clientinfo.first_Name}"></td>
             <td th:text="${clientinfo.last_Name}"></td>
