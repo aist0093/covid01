@@ -2,27 +2,42 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>booking view</title>
+    <title> Secretary page </title>
 </head>
 <body>
-<h1>Show me bookings</h1>
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for cpr..">
+
+<h1> Secretary Home </h1>
+
+<input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for cpr..">
+
 <table id="myTable">
     <tr class="header">
         <thead>
         <tr>
-            <th>CPR</th>
-            <th>FIRST NAME</th>
-            <th>lAST NAME</th>
+            <th> Client ID </th>
+            <th> </th>
+            <th> Booking Type </th>
+            <th> </th>
+            <th> Result </th>
+            <th> </th>
+            <th> Date </th>
+
 
         </tr>
         </thead>
         <tbody>
-        <tr th:each="clientinfo : ${clientInfoTable}">
-            <td th:text="${clientinfo.cpr}"></td>
-            <td th:text="${clientinfo.first_Name}"></td>
-            <td th:text="${clientinfo.last_Name}"></td>
+        <tr th:each="booking : ${bookingsTable}">
+            <td th:text="${booking.clientID}"></td>
+            <td></td>
+            <td th:text="${booking.type}"></td>
+            <td></td>
+            <td th:text="${booking.result}"></td>
+            <td></td>
 
+            <td th:each="bookingDate : ${bookingDatesTable}"
+                th:if="(${bookingDate.dateID} == ${booking.dateID})"
+                th:text="${bookingDate.date +' '+ bookingDate.time}">
+            </td>
 
 
         </tr>
@@ -31,7 +46,7 @@
 
 </table>
 <script>
-    function myFunction() {
+    function searchFunction() {
         // Declare variables
         var input, filter, table, tr, td, i;
         input = document.getElementById("myInput");

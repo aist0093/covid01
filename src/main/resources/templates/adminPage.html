@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin page </title>
+</head>
+<body>
+
+<h1> Admin Home</h1>
+
+<input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for names..">
+
+<table id="myTable">
+  <tr class="header">
+    <thead>
+    <tr>
+      <th> Client ID </th>
+      <th> </th>
+      <th> Booking Type </th>
+      <th> </th>
+      <th> Result </th>
+      <th> </th>
+      <th> Date </th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="booking : ${bookingsTable}">
+      <td th:text="${booking.clientID}"></td>
+      <td></td>
+      <td th:text="${booking.type}"></td>
+      <td></td>
+      <td th:text="${booking.result}"></td>
+      <td></td>
+
+      <td th:each="bookingDate : ${bookingDatesTable}"
+          th:if="(${bookingDate.dateID} == ${booking.dateID})"
+          th:text="${bookingDate.date +' '+ bookingDate.time}">
+      </td>
+
+
+    </tr>
+    </tbody>
+
+
+</table>
+<script>
+  function searchFunction() {
+    // Declare variables
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+</script>
+</body>
+</html>

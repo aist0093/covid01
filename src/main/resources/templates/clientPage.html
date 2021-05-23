@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Client Bookings</title>
+  <title>Client Page</title>
 </head>
 <body>
 <h1>Bookings and Results</h1>
@@ -22,7 +22,7 @@
     <tbody>
       <tr th:each="booking : ${bookingsTable}">
 
-        <td th:each="client : ${clientTable}"
+        <td th:each="client : ${clientsTable}"
             th:if="(${client.clientID} == ${booking.clientID})">
           <p th:each="clientInfo : ${clientInfosTable}"
              th:if="(${clientInfo.cpr} == ${client.cpr})"
@@ -33,7 +33,7 @@
         </td>
         <td></td>
 
-        <td th:each="client : ${clientTable}"
+        <td th:each="client : ${clientsTable}"
             th:if="(${client.clientID} == ${booking.clientID})"
             th:text="${client.cpr}">
         </td>
