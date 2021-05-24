@@ -1,11 +1,13 @@
 package covid.project.controller;
 
 import covid.project.model.*;
+import covid.project.repo.BookingRepo;
 import covid.project.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -21,6 +23,8 @@ public class HomeController {
     BookingDateServiceInter bookingDateServiceInter;
     @Autowired
     ClientPageServiceInter clientPageServiceInter;
+    @Autowired
+    BookingRepo bookingRepo;
 
     @GetMapping("/")
     public String Index(){
@@ -60,6 +64,11 @@ public class HomeController {
         List<ClientPage> clientPageList = clientPageServiceInter.fetchAll();
         model.addAttribute("clientPageList", clientPageList);
         return "clientPage";
+    }
+    @PostMapping(value="/edit")
+    public String update(Booking booking) {
+        bookingRepo.updateResult(booking);
+        return "redirect:/secPage";
     }
 
 

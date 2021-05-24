@@ -11,4 +11,5 @@ public interface BookingServiceInter {
     public int addBooking(Booking booking);
     public List<Booking> fetchAll();
     public Booking findBookingById(int bookID);
+    public int updateResult(Booking booking);
 }

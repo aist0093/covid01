@@ -7,4 +7,5 @@ public interface BookingInter {
      int addBooking(Booking booking);
      List<Booking> fetchAll();
      Booking findBookingById(int bookID);
+     int updateResult(Booking booking);
 }
