@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>whatever</title>
+</head>
+<body>
+<form th:action="@{/createAppointment}" method="post">
+    <select name="aptType">
+        <option value="test">Test</option>
+        <option value="vaccine">Vaccine</option>
+
+    </select>
+    <input type="date" name="aptDate"/>
+    <input type="time" name="aptTime"/>
+
+    <button type="submit">Book apt</button>
+</form>
+</body>
+</html>

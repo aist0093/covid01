@@ -9,7 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.awt.print.Book;
 import java.util.List;
 
 @Controller
@@ -31,6 +34,22 @@ public class HomeController {
     @GetMapping("/loginPage")
     public String LoginPage(){
         return "loginPage";
+    }
+
+    @GetMapping("/whateverPage")
+    public String whateverPage(){
+        return "whateverPage";
+    }
+    @PostMapping("/createAppointment")
+    public String createApt(@RequestParam String aptType, @RequestParam String aptDate, @RequestParam String aptTime ){
+       // bookingServiceInter.addBooking(aptType);
+        System.out.println(aptDate +" " + aptTime + " " + aptType);
+        BookingDate bookingDate = new BookingDate(-1, aptDate, aptTime);
+        bookingDateServiceInter.FindBookingByTime(bookingDate);
+        Booking booking = new Booking(-1, 1, aptType, false, bookingDate.getDateID());
+        bookingServiceInter.addBooking(booking, bookingDate);
+        System.out.println(aptType);
+        return "whateverPage";
     }
 
     @GetMapping("/adminPage")
@@ -67,6 +86,19 @@ public class HomeController {
         List<BookingDate> bookingDateList = bookingDateServiceInter.fetchAll();
         model.addAttribute("bookingDatesTable", bookingDateList);
         return "clientPage";
+    }
+
+    @GetMapping("/singleClientPage")
+    public String HomeSingleClient(Model model){
+        List<Client> clientList = clientServiceInter.fetchAll();
+        model.addAttribute("clientsTable", clientList);
+        List<Booking> bookingList = bookingServiceInter.fetchAll();
+        model.addAttribute("bookingsTable", bookingList);
+        List<ClientInfo> clientInfoList = clientInfoServiceInter.fetchAll();
+        model.addAttribute("clientInfosTable", clientInfoList);
+        List<BookingDate> bookingDateList = bookingDateServiceInter.fetchAll();
+        model.addAttribute("bookingDatesTable", bookingDateList);
+        return "singleClientPage";
     }
 
 

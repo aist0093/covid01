@@ -1,6 +1,7 @@
 package covid.project.service;
 
 import covid.project.model.Booking;
+import covid.project.model.BookingDate;
 import covid.project.repo.BookingInter;
 import covid.project.repo.BookingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,8 @@ public class BookingService implements BookingServiceInter {
     BookingRepo bookingRepo;
 
     @Override
-    public int addBooking(Booking booking) {
-        return bookingRepo.addBooking(booking);
+    public int addBooking(Booking booking, BookingDate bookingDate) {
+        return bookingRepo.addBooking(booking, bookingDate);
     }
     @Override
     public List<Booking> fetchAll() {
