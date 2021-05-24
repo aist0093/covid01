@@ -27,6 +27,11 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping("/loginPage")
+    public String LoginPage(){
+        return "loginPage";
+    }
+
     @GetMapping("/adminPage")
     public String Home(Model model){
         List<Booking> bookingList = bookingServiceInter.fetchAll();
