@@ -11,18 +11,23 @@ import java.util.List;
 @Service
 public class BookingService implements BookingServiceInter {
     @Autowired
-    BookingRepo bookingRepo;
+    BookingRepo repo;
 
     @Override
     public int addBooking(Booking booking, BookingDate bookingDate) {
-        return bookingRepo.addBooking(booking, bookingDate);
+        return repo.addBooking(booking, bookingDate);
     }
     @Override
     public List<Booking> fetchAll() {
-        return bookingRepo.fetchAll();
+        return repo.fetchAll();
     }
     @Override
     public Booking findBookingById(int bookID) {
-        return bookingRepo.findBookingById(bookID);
+        return repo.findBookingById(bookID);
+    }
+
+    @Override
+    public int updateResult(Booking booking) {
+        return repo.updateResult(booking);
     }
 }

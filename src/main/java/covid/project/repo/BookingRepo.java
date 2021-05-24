@@ -13,18 +13,19 @@ import org.springframework.stereotype.Repository;
 import java.sql.PreparedStatement;
 import java.time.LocalTime;
 import java.util.List;
+
 @Repository
 public class BookingRepo implements BookingInter{
 
     @Autowired
-    JdbcTemplate template;
+    JdbcTemplate jdbc;
     @Override
 
     public int addBooking(Booking booking, BookingDate bookingDate) {
         System.out.println(bookingDate.getTime());
         String sql = "INSERT INTO booking ( Type, Result, DateID, ClientID) VALUES (?,?,(SELECT DateID FROM bookingdate WHERE cast(dateDate as date) = cast(? as date) and cast(timeTime as time) = cast(? as time)),?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
-        template.update(
+        jdbc.update(
                 connection -> {
                     PreparedStatement ps = connection.prepareStatement(sql, new String[] {"id"});
                     ps.setString(1, booking.getType());
@@ -39,19 +40,23 @@ public class BookingRepo implements BookingInter{
 
     }
 
-
     @Override
     public List<Booking> fetchAll() {
         String sql = "SELECT * FROM booking";
         RowMapper<Booking> rowMapper = new BeanPropertyRowMapper<>(Booking.class);
-        return template.query(sql, rowMapper);
+        return jdbc.query(sql, rowMapper);
     }
 
     @Override
     public Booking findBookingById(int bookID){
         String sql = "SELECT * FROM booking WHERE BookID = ?";
         RowMapper<Booking> rowMapper = new BeanPropertyRowMapper<>(Booking.class);
-        Booking booking = template.queryForObject(sql, rowMapper, bookID);
+        Booking booking = jdbc.queryForObject(sql, rowMapper, bookID);
         return booking;
+    }
+
+    public int updateResult(Booking booking) {
+        String sql = "Update booking SET Result = ? WHERE BookID = ?";
+        return jdbc.update(sql, booking.isResult(), booking.getBookID());
     }
 }

@@ -5,7 +5,9 @@ import covid.project.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.awt.print.Book;
 import java.util.List;
@@ -37,13 +39,13 @@ public class HomeController {
     public String whateverPage(){
         return "whateverPage";
     }
-    @RequestMapping( "createAppointment")
+    @PostMapping("/createAppointment")
     public String createApt(@RequestParam String aptType, @RequestParam String aptDate, @RequestParam String aptTime ){
        // bookingServiceInter.addBooking(aptType);
         System.out.println(aptDate +" " + aptTime + " " + aptType);
         BookingDate bookingDate = new BookingDate(-1, aptDate, aptTime);
         bookingDateServiceInter.FindBookingByTime(bookingDate);
-        Booking booking = new Booking(-1, 1, aptType, true, bookingDate.getDateID());
+        Booking booking = new Booking(-1, 1, aptType, false, bookingDate.getDateID());
         bookingServiceInter.addBooking(booking, bookingDate);
         System.out.println(aptType);
         return "whateverPage";

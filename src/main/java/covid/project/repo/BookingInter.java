@@ -12,5 +12,4 @@ public interface BookingInter {
      int addBooking(Booking booking, BookingDate bookingDate);
      List<Booking> fetchAll();
      Booking findBookingById(int bookID);
-
 }
