@@ -20,37 +20,21 @@
   <th>Booking date</th>
   </thead>
     <tbody>
-      <tr th:each="booking : ${bookingsTable}">
+    <tr th:each="clientpage : ${clientPageList}">
+      <td th:text="${clientpage.full_name}"></td>
+      <td></td>
+      <td th:text="${clientpage.cpr}"></td>
+      <td></td>
+      <td th:text="${clientpage.type}"></td>
+      <td></td>
+      <td th:text="${clientpage.result}"></td>
+      <td></td>
+      <td th:text="${clientpage.date}"></td>
 
-        <td th:each="client : ${clientsTable}"
-            th:if="(${client.clientID} == ${booking.clientID})">
-          <p th:each="clientInfo : ${clientInfosTable}"
-             th:if="(${clientInfo.cpr} == ${client.cpr})"
-             th:text="${clientInfo.first_Name + ' ' + clientInfo.last_Name}"
-          >
-          <p/>
+    </tr>
 
-        </td>
-        <td></td>
-
-        <td th:each="client : ${clientsTable}"
-            th:if="(${client.clientID} == ${booking.clientID})"
-            th:text="${client.cpr}">
-        </td>
-        <td></td>
-        <td th:text="${booking.type}"></td>
-        <td></td>
-
-        <td th:text="${booking.result}"></td>
-        <td></td>
-
-        <td th:each="bookingDate : ${bookingDatesTable}"
-            th:if="(${bookingDate.dateID} == ${booking.dateID})"
-            th:text="${bookingDate.date +' '+ bookingDate.time}">
-        </td>
-
-      </tr>
     </tbody>
 </table>
 </body>
 </html>
+
