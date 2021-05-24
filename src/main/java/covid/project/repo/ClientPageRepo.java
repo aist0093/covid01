@@ -24,7 +24,7 @@ public class ClientPageRepo implements ClientPageInter{
                 "    c.cpr,\n" +
                 "    b.type,\n" +
                 "    b.result,\n" +
-                "    concat(b2.Date,' ', b2.Time) as 'date'\n" +
+                "    concat(b2.dateDate,' ', b2.timeTime) as 'date'\n" +
                 "from booking b\n" +
                 "join client c on c.ClientID = b.ClientID\n" +
                 "join clientinfo c2 on c2.cpr = c.CPR\n" +
