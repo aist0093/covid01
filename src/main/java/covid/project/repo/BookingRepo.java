@@ -11,6 +11,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
+import java.time.LocalTime;
 import java.util.List;
 @Repository
 public class BookingRepo implements BookingInter{
@@ -29,7 +30,7 @@ public class BookingRepo implements BookingInter{
                     ps.setString(1, booking.getType());
                     ps.setBoolean(2, booking.isResult());
                     ps.setDate(3, java.sql.Date.valueOf(bookingDate.getDate()));
-                    ps.setTime(4, java.sql.Time.valueOf(bookingDate.getTime()));
+                    ps.setTime(4, java.sql.Time.valueOf(LocalTime.parse(bookingDate.getTime())));
                     ps.setInt(5, booking.getClientID());
                     return ps;
                 }, keyHolder);
