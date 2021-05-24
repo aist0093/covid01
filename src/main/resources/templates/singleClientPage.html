@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Client Page</title>
+</head>
+<body>
+<h1>Bookings and Results</h1>
+
+<table>
+    <thead>
+    <th>Full name</th>
+    <th></th>
+    <th>CPR</th>
+    <th></th>
+    <th>Type</th>
+    <th></th>
+    <th>Result</th>
+    <th></th>
+    <th>Booking date</th>
+    </thead>
+    <tbody>
+    <tr th:each="booking : ${bookingsTable}" >
+
+        <td th:each="client : ${clientsTable} "
+            th:if="(${client.clientID} == ${booking.clientID})">
+            <p th:each="clientInfo : ${clientInfosTable}"
+               th:if="(${clientInfo.cpr} == ${client.cpr})"
+               th:text="${clientInfo.first_Name + ' ' + clientInfo.last_Name}"
+            >
+            <p/>
+
+        </td>
+        <td></td>
+
+        <td th:each="client : ${clientsTable}"
+            th:if="(${client.clientID} == ${booking.clientID})"
+            th:text="${client.cpr}">
+        </td>
+        <td></td>
+        <td th:text="${booking.type}"></td>
+        <td></td>
+
+        <td th:text="${booking.result}"></td>
+        <td></td>
+
+        <td th:each="bookingDate : ${bookingDatesTable}"
+            th:if="(${bookingDate.dateID} == ${booking.dateID})"
+            th:text="${bookingDate.date +' '+ bookingDate.time}">
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
