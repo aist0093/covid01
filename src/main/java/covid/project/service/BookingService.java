@@ -2,6 +2,7 @@ package covid.project.service;
 
 import covid.project.model.Booking;
 import covid.project.model.BookingDate;
+import covid.project.model.Client;
 import covid.project.repo.BookingInter;
 import covid.project.repo.BookingRepo;
 import org.springframework.beans.factory.annotation.Autowired;

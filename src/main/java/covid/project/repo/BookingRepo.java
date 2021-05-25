@@ -2,6 +2,7 @@ package covid.project.repo;
 
 import covid.project.model.Booking;
 import covid.project.model.BookingDate;
+import covid.project.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

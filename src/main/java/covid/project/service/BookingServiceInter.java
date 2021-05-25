@@ -2,6 +2,7 @@ package covid.project.service;
 
 import covid.project.model.Booking;
 import covid.project.model.BookingDate;
+import covid.project.model.Client;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

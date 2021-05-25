@@ -41,8 +41,6 @@ public class HomeController {
     }
     @PostMapping("/createAppointment")
     public String createApt(@RequestParam String aptType, @RequestParam String aptDate, @RequestParam String aptTime ){
-       // bookingServiceInter.addBooking(aptType);
-        System.out.println(aptDate +" " + aptTime + " " + aptType);
         BookingDate bookingDate = new BookingDate(-1, aptDate, aptTime);
         bookingDateServiceInter.FindBookingByTime(bookingDate);
         Booking booking = new Booking(-1, 1, aptType, false, bookingDate.getDateID());
