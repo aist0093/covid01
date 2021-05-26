@@ -1,14 +1,17 @@
 package covid.project.controller;
 
+import ch.qos.logback.classic.Logger;
 import covid.project.model.*;
+import covid.project.security.IAuthenticationFacade;
 import covid.project.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.awt.print.Book;
 import java.util.List;
 
@@ -24,6 +27,8 @@ public class HomeController {
     BookingDateServiceInter bookingDateServiceInter;
     @Autowired
     ClientPageServiceInter clientPageServiceInter;
+    @Autowired
+    private IAuthenticationFacade authenticationFacade;
 
     @GetMapping("/")
     public String Index(){
@@ -32,6 +37,8 @@ public class HomeController {
 
     @GetMapping("/loginPage")
     public String LoginPage(){
+        //getting current user CPR
+        System.out.println(authenticationFacade.getAuthentication().getName());
         return "loginPage";
     }
 
