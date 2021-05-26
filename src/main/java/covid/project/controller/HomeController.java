@@ -39,9 +39,6 @@ public class HomeController {
 
     @GetMapping("/loginPage")
     public String LoginPage(){
-        //getting current user CPR
-        System.out.println(authenticationFacade.getAuthentication().getName());
-        System.out.println(authenticationFacade.getAuthentication().getPrincipal().toString());
         return "loginPage";
     }
 
@@ -93,7 +90,6 @@ public class HomeController {
         List<ClientPage> clientPageList = clientPageServiceInter.fetchAll();
         model.addAttribute("clientPageList", clientPageList);
         model.addAttribute("myUsername", authenticationFacade.getAuthentication().getName());
-        System.out.println(authenticationFacade.getAuthentication().getPrincipal().toString());
         return "singleClientPage";
     }
 
