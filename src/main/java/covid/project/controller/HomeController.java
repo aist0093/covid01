@@ -5,6 +5,7 @@ import covid.project.model.*;
 import covid.project.security.IAuthenticationFacade;
 import covid.project.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.stereotype.Controller;
@@ -53,7 +54,7 @@ public class HomeController {
     public String createApt(@RequestParam String aptType, @RequestParam String aptDate, @RequestParam String aptTime ){
         BookingDate bookingDate = new BookingDate(-1, aptDate, aptTime);
         bookingDateServiceInter.FindBookingByTime(bookingDate);
-        Booking booking = new Booking(-1, 1, aptType, false, bookingDate.getDateID());
+        Booking booking = new Booking(-1, userServiceInter.getClientID(), aptType, false, bookingDate.getDateID());
         bookingServiceInter.addBooking(booking, bookingDate);
         System.out.println(aptType);
         return "whateverPage";

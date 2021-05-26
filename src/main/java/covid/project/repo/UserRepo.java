@@ -2,6 +2,7 @@ package covid.project.repo;
 
 import covid.project.model.Booking;
 import covid.project.model.User;
+import covid.project.security.IAuthenticationFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -13,13 +14,16 @@ import java.util.List;
 public class UserRepo implements UserInter{
 
     @Autowired
-    JdbcTemplate template;
+    JdbcTemplate jdbc;
+
+    @Autowired
+    IAuthenticationFacade auth;
 
     @Override
     public User findUserByUsername(String username){
         String sql = "SELECT * FROM users WHERE username = ?";
         RowMapper<User> rowMapper = new BeanPropertyRowMapper<>(User.class);
-        User user = template.queryForObject(sql, rowMapper, username);
+        User user = jdbc.queryForObject(sql, rowMapper, username);
         return user;
     }
 
@@ -27,7 +31,13 @@ public class UserRepo implements UserInter{
     public List<User> fetchAll() {
         String sql = "SELECT * FROM users";
         RowMapper<User> rowMapper = new BeanPropertyRowMapper<>(User.class);
-        return template.query(sql, rowMapper);
+        return jdbc.query(sql, rowMapper);
 
+    }
+
+    public int getClientID() {
+        String sql = "SELECT ClientID from client where cpr = ?";
+        return jdbc.queryForObject(
+                sql, Integer.class, new Object[] {auth.getAuthentication().getName()});
     }
 }

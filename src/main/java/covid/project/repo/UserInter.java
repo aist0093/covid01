@@ -8,5 +8,6 @@ import java.util.List;
 public interface UserInter {
     User findUserByUsername(String username);
     List<User> fetchAll();
+    public int getClientID();
 
 }

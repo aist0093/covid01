@@ -22,5 +22,10 @@ public class UserService implements UserServiceInter{
         return userRepo.fetchAll();
     }
 
+    @Override
+    public int getClientID() {
+        return userRepo.getClientID();
+    }
+
 
 }

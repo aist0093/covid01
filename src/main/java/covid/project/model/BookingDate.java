@@ -3,20 +3,24 @@ package covid.project.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.sql.Time;
+import java.sql.Date;
 
 @Entity
 public class BookingDate {
     @Id
     private int dateID;
-    private String date;
-    private String time;
+    private String dateDate;
+    private String timeTime;
 
 
     // constructors
-    public BookingDate(int dateID, String date, String time) {
+
+
+    public BookingDate(int dateID, String dateDate, String timeTime) {
         this.dateID = dateID;
-        this.date = date;
-        this.time = time;
+        this.dateDate = dateDate;
+        this.timeTime = timeTime;
     }
 
     public BookingDate() {
@@ -33,16 +37,18 @@ public class BookingDate {
     }
 
     public String getDate() {
-        return date;
+        return dateDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDate(String dateDate) {
+        this.dateDate = dateDate;
     }
 
-    public String getTime() { return time; }
+    public String getTime() {
+        return timeTime;
+    }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setTime(String timeTime) {
+        this.timeTime = timeTime;
     }
 }
