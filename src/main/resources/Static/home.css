@@ -1,6 +1,6 @@
 body{
     margin: 0;
-    padding: 0;
+    padding:0;
 }
 main{
     display: flex;
@@ -23,12 +23,15 @@ header{
 }
 #title{
     width: 40%;
-    //border: solid red 1px;
+    border: solid red 1px;
     text-align: center;
     font-size: 3rem;
 }
-button{
-    margin-left: auto;
+#user{
+
+}
+#log{
+
 }
 #buttons{
     display: flex;
@@ -40,7 +43,7 @@ section{
     display:flex;
     flex-direction: row;
     justify-content: space-around;
-    //border: solid red 1px;
+//border: solid red 1px;
     width: 100%;
 
 }

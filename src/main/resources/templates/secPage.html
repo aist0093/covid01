@@ -2,14 +2,25 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title> Secretary page </title>
+    <title>Admin</title>
+    <link href="src/main/resources/Static/employ.css" th:href="@{/Static/employ.css}" rel="stylesheet">
+    <link rel="stylesheet" href="../Static/employ.css"/>
 </head>
 <body>
-
-<h1> Secretary Home </h1>
-
+<header>
+    <h1><marquee behavior="scroll" direction="left">covid stats, deaths 60000, recovered 60000, new infected 53.6</marquee></h1>
+</header>
+<main>
+    <div id="title-btn">
+        <div id="buttons">
+            <button id="log">LOG OUT</button>
+            <button id="user">SECRETARY</button>
+        </div>
+        <h1 id="title">ACAS Test Center</h1>
+    </div>
+    <div id="search">
 <input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for cpr..">
-
+    </div>
 <table id="myTable">
     <tr class="header">
         <thead>

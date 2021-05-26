@@ -2,11 +2,26 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Client Page</title>
+    <title>now logged in</title>
+    <link href="src/main/resources/Static/home.css" th:href="@{/Static/home.css}" rel="stylesheet">
+    <link rel="stylesheet" href="../Static/home.css"/>
 </head>
 <body>
-<h1>Bookings and Results</h1>
-
+<header>
+    <h1><marquee behavior="scroll" direction="left">covid stats, deaths 60000, recovered 60000, new infected 53.6</marquee></h1>
+</header>
+<main>
+    <div id="title-btn">
+        <div id="buttons">
+            <button id="user">user</button>
+            <button id="log">log out</button>
+        </div>
+        <h1 id="title">ACAS Test Center</h1>
+    </div>
+    <section>
+        <a href=""><h1>Book a Covid Test</h1></a>
+        <a href=""><h1>Book a Covid Vaccine</h1></a>
+    </section>
 <table>
     <thead>
     <th>Full name</th>
@@ -21,7 +36,6 @@
     </thead>
     <tbody>
     <tr th:each="booking : ${bookingsTable}" >
-
         <td th:each="client : ${clientsTable} "
             th:if="(${client.clientID} == ${booking.clientID})">
             <p th:each="clientInfo : ${clientInfosTable}"
@@ -29,10 +43,8 @@
                th:text="${clientInfo.first_Name + ' ' + clientInfo.last_Name}"
             >
             <p/>
-
         </td>
         <td></td>
-
         <td th:each="client : ${clientsTable}"
             th:if="(${client.clientID} == ${booking.clientID})"
             th:text="${client.cpr}">
@@ -40,15 +52,12 @@
         <td></td>
         <td th:text="${booking.type}"></td>
         <td></td>
-
         <td th:text="${booking.result}"></td>
         <td></td>
-
         <td th:each="bookingDate : ${bookingDatesTable}"
             th:if="(${bookingDate.dateID} == ${booking.dateID})"
             th:text="${bookingDate.date +' '+ bookingDate.time}">
         </td>
-
     </tr>
     </tbody>
 </table>
