@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Admin</title>
-  <link href="src/main/resources/Static/employ.css" th:href="@{/Static/employ.css}" rel="stylesheet">
-  <link rel="stylesheet" href="../Static/employ.css"/>
+  <link href="../static/css/employ.cc" type="text/css" th:href="@{http://localhost:8080/css/employ.css}" rel="stylesheet">
 </head>
 <body>
 <header>
-  <h1><marquee behavior="scroll" direction="left">covid stats, deaths 60000, recovered 60000, new infected 53.6</marquee></h1>
+  <h1><marquee behavior="scroll" direction="left">Covid-19 Statistics Last 24 Hours, Confirmed Cases - 794, Recovered - 1,129, Deaths - 1, Quick-Test - 371,521, PCR Test - 139.159</marquee></h1>
 </header>
 <main>
-  <div id="title-btn">
+  <div>
     <div id="buttons">
       <button id="log">LOG OUT</button>
       <button id="user">ADMIN</button>
@@ -21,41 +20,7 @@
   <div id="search">
 <input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for names..">
   </div>
-<table id="myTable">
-  <tr class="header">
-    <thead>
-    <tr>
-      <th> Client ID </th>
-      <th> </th>
-      <th> Booking Type </th>
-      <th> </th>
-      <th> Result </th>
-      <th> </th>
-      <th> Date </th>
 
-
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="booking : ${bookingsTable}">
-      <td th:text="${booking.clientID}"></td>
-      <td></td>
-      <td th:text="${booking.type}"></td>
-      <td></td>
-      <td th:text="${booking.result}"></td>
-      <td></td>
-
-      <td th:each="bookingDate : ${bookingDatesTable}"
-          th:if="(${bookingDate.dateID} == ${booking.dateID})"
-          th:text="${bookingDate.date +' '+ bookingDate.time}">
-      </td>
-
-
-    </tr>
-    </tbody>
-
-
-</table>
 <script>
   function searchFunction() {
     // Declare variables
@@ -78,5 +43,28 @@
     }
   }
 </script>
+  <table>
+    <tr>
+      <thead>
+      <tr>
+        <th> Client ID </th>
+        <th> Booking Type </th>
+        <th> Result </th>
+        <th> Date </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="booking : ${bookingsTable}">
+        <td th:text="${booking.clientID}"></td>
+        <td th:text="${booking.type}"></td>
+        <td th:text="${booking.result}"></td>
+        <td th:each="bookingDate : ${bookingDatesTable}"
+            th:if="(${bookingDate.dateID} == ${booking.dateID})"
+            th:text="${bookingDate.date +' '+ bookingDate.time}">
+        </td>
+        </tr>
+      </tbody>
+  </table>
+</main>
 </body>
 </html>

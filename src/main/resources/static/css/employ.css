@@ -1,0 +1,57 @@
+body{
+    margin: 0;
+    padding:1vw;
+}
+header{
+    text-align: center;
+    font-size: 15px;
+    border: solid red 1px;
+}
+
+#buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+#title{
+    width: 40%;
+//border: solid red 1px;
+    text-align: center;
+    font-size: 3rem;
+    margin: auto;
+}
+#search{
+    margin-right: auto;
+}
+#myTable{
+
+}
+a{
+    border: solid blue 1px;
+    text-decoration-line: none;
+    color: black;
+    width: 30%;
+    padding: 5vw;
+    text-align: center;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #508991
+}
+
+th {
+    background-color: #004346;
+    color: aliceblue;
+    font-weight: 300;
+    font-family: Manrope, sans-serif;
+}
