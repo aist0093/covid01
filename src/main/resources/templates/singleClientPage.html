@@ -8,13 +8,17 @@
 </head>
 <body>
 <header>
-    <h1><marquee behavior="scroll" direction="left">covid stats, deaths 60000, recovered 60000, new infected 53.6</marquee></h1>
+    <h1><marquee behavior="scroll" direction="left">Covid-19 Statistics Last 24 Hours, Confirmed Cases - 794, Recovered - 1,129, Deaths - 1, Quick-Test - 371,521, PCR Test - 139.159</marquee></h1>
 </header>
 <main>
     <div id="title-btn">
         <div id="buttons">
-            <button id="user">user</button>
-            <button id="log">log out</button>
+            <form action="/logout">
+                <input type="submit" value="LOG OUT" />
+            </form>
+            <form action="/usersPage">
+                <input type="submit" value="Client Information" />
+            </form>
         </div>
         <h1 id="title">ACAS Test Center</h1>
     </div>
@@ -22,44 +26,35 @@
         <a href=""><h1>Book a Covid Test</h1></a>
         <a href=""><h1>Book a Covid Vaccine</h1></a>
     </section>
-<table>
-    <thead>
-    <th>Full name</th>
-    <th></th>
-    <th>CPR</th>
-    <th></th>
-    <th>Type</th>
-    <th></th>
-    <th>Result</th>
-    <th></th>
-    <th>Booking date</th>
-    </thead>
-    <tbody>
-    <tr th:each="booking : ${bookingsTable}" >
-        <td th:each="client : ${clientsTable} "
-            th:if="(${client.clientID} == ${booking.clientID})">
-            <p th:each="clientInfo : ${clientInfosTable}"
-               th:if="(${clientInfo.cpr} == ${client.cpr})"
-               th:text="${clientInfo.first_Name + ' ' + clientInfo.last_Name}"
-            >
-            <p/>
-        </td>
-        <td></td>
-        <td th:each="client : ${clientsTable}"
-            th:if="(${client.clientID} == ${booking.clientID})"
-            th:text="${client.cpr}">
-        </td>
-        <td></td>
-        <td th:text="${booking.type}"></td>
-        <td></td>
-        <td th:text="${booking.result}"></td>
-        <td></td>
-        <td th:each="bookingDate : ${bookingDatesTable}"
-            th:if="(${bookingDate.dateID} == ${booking.dateID})"
-            th:text="${bookingDate.date +' '+ bookingDate.time}">
-        </td>
-    </tr>
-    </tbody>
-</table>
+    <table>
+        <thead>
+        <th>Full name</th>
+        <th></th>
+        <th>CPR</th>
+        <th></th>
+        <th>Type</th>
+        <th></th>
+        <th>Result</th>
+        <th></th>
+        <th>Booking date</th>
+        </thead>
+        <tbody>
+        <tr th:each="clientpage : ${clientPageList}" th:if="${clientpage.cpr} == ${myUsername}">
+            <td th:text="${clientpage.full_name}"></td>
+            <td></td>
+            <td th:text="${clientpage.cpr}"></td>
+            <td></td>
+            <td th:text="${clientpage.type}"></td>
+            <td></td>
+            <td th:text="${clientpage.result}"></td>
+            <td></td>
+            <td th:text="${clientpage.date}"></td>
+
+        </tr>
+
+        </tbody>
+    </table>
+</main>
 </body>
 </html>
+

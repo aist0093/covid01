@@ -29,6 +29,8 @@ public class HomeController {
     ClientPageServiceInter clientPageServiceInter;
     @Autowired
     private IAuthenticationFacade authenticationFacade;
+    @Autowired
+    UserServiceInter userServiceInter;
 
     @GetMapping("/")
     public String Index(){
@@ -39,6 +41,7 @@ public class HomeController {
     public String LoginPage(){
         //getting current user CPR
         System.out.println(authenticationFacade.getAuthentication().getName());
+        System.out.println(authenticationFacade.getAuthentication().getPrincipal().toString());
         return "loginPage";
     }
 
@@ -85,18 +88,27 @@ public class HomeController {
         model.addAttribute("clientPageList", clientPageList);
         return "clientPage";
     }
-
     @GetMapping("/singleClientPage")
     public String HomeSingleClient(Model model){
-        List<Client> clientList = clientServiceInter.fetchAll();
-        model.addAttribute("clientsTable", clientList);
-        List<Booking> bookingList = bookingServiceInter.fetchAll();
-        model.addAttribute("bookingsTable", bookingList);
-        List<ClientInfo> clientInfoList = clientInfoServiceInter.fetchAll();
-        model.addAttribute("clientInfosTable", clientInfoList);
-        List<BookingDate> bookingDateList = bookingDateServiceInter.fetchAll();
-        model.addAttribute("bookingDatesTable", bookingDateList);
+        List<ClientPage> clientPageList = clientPageServiceInter.fetchAll();
+        model.addAttribute("clientPageList", clientPageList);
+        model.addAttribute("myUsername", authenticationFacade.getAuthentication().getName());
+        System.out.println(authenticationFacade.getAuthentication().getPrincipal().toString());
         return "singleClientPage";
+    }
+
+    @GetMapping("/usersPage")
+    public String UsersPage(Model model){
+        List<User> usersPageList = userServiceInter.fetchAll();
+        model.addAttribute("usersPageList", usersPageList);
+        model.addAttribute("myUsername", authenticationFacade.getAuthentication().getName());
+        return "usersPage";
+    }
+    @GetMapping("/allUsers")
+    public String AllUserz(Model model){
+        List<User> usersPageList = userServiceInter.fetchAll();
+        model.addAttribute("usersPageList", usersPageList);
+        return "allUsers";
     }
 
 

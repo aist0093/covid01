@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>users</title>
+    <link href="src/main/resources/Static/home.css" th:href="@{static}" rel="stylesheet">
+    <link rel="stylesheet" href="../Static/home.css"/>
+</head>
+<body>
+<main>
+    <div id="title-btn">
+        <div id="buttons">
+            <form action="/logout">
+                <input type="submit" value="LOG OUT" />
+            </form>
+            <form action="/singleClientPage">
+                <input type="submit" value="Client Information" />
+            </form>
+        </div>
+        <h1 id="title">ACAS Test Center</h1>
+    </div>
+
+    <table>
+        <thead>
+        <th>User ID</th>
+        <th></th>
+        <th>Password</th>
+        <th></th>
+        <th>Role</th>
+        <th></th>
+        <th>Enabled</th>
+        <th></th>
+        <th>Username</th>
+        </thead>
+        <tbody>
+        <!--/*@thymesVar id="myUsername" type="aj"*/-->
+        <tr th:each="usersPage: ${usersPageList}" th:if="${usersPage.username} == ${myUsername}">
+            <td th:text="${usersPage.user_id}"></td>
+            <td></td>
+            <td th:text="${usersPage.password}"></td>
+            <td></td>
+            <td th:text="${usersPage.role}"></td>
+            <td></td>
+            <td th:text="${usersPage.enabled}"></td>
+            <td></td>
+            <td th:text="${usersPage.username}"></td>
+
+        </tr>
+
+        </tbody>
+    </table>
+</main>
+</body>
+</html>
