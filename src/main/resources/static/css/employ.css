@@ -30,21 +30,10 @@ h2 {
     margin-top: 5vw;
 }
 #search{
-    width: 50%;
-}
-#myInput{
-    margin-right: auto;
-}
-#back{
     margin-left: auto;
 }
-a{
-    border: solid blue 1px;
-    text-decoration-line: none;
-    color: black;
-    width: 30%;
-    padding: 5vw;
-    text-align: center;
+#back{
+    margin-right: auto;
 }
 .spaceT{
     position: relative;
