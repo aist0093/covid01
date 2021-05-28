@@ -32,7 +32,7 @@
         <th>Username</th>
         </thead>
         <tbody>
-        <!--/*@thymesVar id="myUsername" type="aj"*/-->
+
         <tr th:each="usersPage: ${usersPageList}" th:if="${usersPage.username} == ${myUsername}">
             <td th:text="${usersPage.user_id}"></td>
             <td></td>
