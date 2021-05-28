@@ -55,3 +55,23 @@ a{
     padding: 5vw;
     text-align: center;
 }
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #508991
+}
+
+th {
+    background-color: #004346;
+    color: aliceblue;
+    font-weight: 300;
+    font-family: Manrope, sans-serif;
+}

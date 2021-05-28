@@ -8,10 +8,11 @@ main{
     row-gap: 5rem;
     align-items: center;
     padding: 2rem;
+    background-image: url("static/images/background.jpeg");
 }
 header{
     text-align: center;
-    font-size: 15px;
+    font-size: 6px;
     border: solid red 1px;
 }
 #title-btn{
@@ -19,7 +20,6 @@ header{
     align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 #title{
     width: 40%;
@@ -27,39 +27,16 @@ header{
     text-align: center;
     font-size: 3rem;
 }
-.test{
+.info{
     display:flex;
     flex-direction: row;
     justify-content: space-around;
-    width: 100%;
-}
-#newTitle{
-    align-items: center;
-    text-align: center;
-    margin: auto;
-}
-button{
-    margin-left: auto;
-}
-#buttons{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-}
-section{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-around;
-    //border: solid red 1px;
-    width: 100%;
-    padding-bottom: 10vw;
-}
-a{
-    border: solid blue 1px;
     text-decoration-line: none;
     color: black;
-    width: 30%;
-    padding: 5vw;
     text-align: center;
+    margin-top: 3vw;
+    width: 100%;
+    font-size: 1vw;
+    padding: 2vw;
 }
+
