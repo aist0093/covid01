@@ -1,31 +1,42 @@
 body{
     margin: 0;
-    padding:1vw;
+    padding: 0;
+    background-image: url("https://images.alphacoders.com/113/1136703.jpg");
 }
-header{
+header {
     text-align: center;
-    font-size: 15px;
-    border: solid red 1px;
+    background: rgba(147, 202, 211, 0.80);
 }
-
-#buttons{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
+h1{
+    background: rgba(147,202,211,0.90);
+    border-radius: 15px;
+    font-size: 1vw;
+}
+h2 {
+    background: rgba(147, 202, 211, 0.90);
+    border-radius: 15px;
+    font-size: 1vw;
 }
 #title{
-    width: 40%;
-//border: solid red 1px;
+    width: 50%;
     text-align: center;
-    font-size: 3rem;
-    margin: auto;
+    font-size: 4rem;
+}
+#title-btn{
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vw;
 }
 #search{
+    width: 50%;
+}
+#myInput{
     margin-right: auto;
 }
-#myTable{
-
+#back{
+    margin-left: auto;
 }
 a{
     border: solid blue 1px;
@@ -34,6 +45,9 @@ a{
     width: 30%;
     padding: 5vw;
     text-align: center;
+}
+.spaceT{
+    position: relative;
 }
 table {
     border-collapse: collapse;
@@ -46,12 +60,17 @@ th, td {
 }
 
 tr:nth-child(even) {
-    background-color: #508991
+    background-color: rgba(147, 202, 211, 0.90);
+
 }
 
 th {
     background-color: #004346;
     color: aliceblue;
     font-weight: 300;
-    font-family: Manrope, sans-serif;
+    color: white;
 }
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; }

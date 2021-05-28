@@ -4,22 +4,26 @@
     <meta charset="UTF-8">
     <title>Secretary</title>
     <link href="../static/css/employ.cc" type="text/css" th:href="@{http://localhost:8080/css/employ.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 <header>
     <h1><marquee behavior="scroll" direction="left">Covid-19 Statistics Last 24 Hours, Confirmed Cases - 794, Recovered - 1,129, Deaths - 1, Quick-Test - 371,521, PCR Test - 139.159</marquee></h1>
 </header>
 <main>
-    <div id="title-btn">
-        <div id="buttons">
-            <button id="log">LOG OUT</button>
-            <button id="user">SECRETARY</button>
+    <main>
+        <div id="title-btn">
+            <h2 id="title">ACAS Test-Center</h2>
         </div>
-        <h1 id="title">ACAS Test Center</h1>
-    </div>
-    <div id="search">
-<input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for cpr..">
-    </div>
+        <div id="search">
+            <input  type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for names..">
+            <form action="/logout">
+                <input id="back" type="submit" value="Log Out" />
+            </form>
+        </div>
 <table id="myTable">
     <tr class="header">
         <thead>
