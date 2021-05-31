@@ -67,7 +67,6 @@ public class HomeController {
         model.addAttribute("clientsTable", clientList);
         List<BookingDate> bookingDateList = bookingDateServiceInter.fetchAll();
         model.addAttribute("bookingDatesTable", bookingDateList);
-        System.out.println(authenticationFacade.getAuthentication().getAuthorities());
         return "adminPage";
 
     }
