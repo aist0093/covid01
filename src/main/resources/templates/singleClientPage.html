@@ -44,7 +44,7 @@
         <th>Booking date</th>
         </thead>
         <tbody>
-        <tr th:each="clientpage : ${clientPageList}"th:if="${clientpage.cpr} == ${myUsername}">>
+        <tr th:each="clientpage : ${clientPageList}"th:if="${clientpage.cpr} == ${myUsername}">
             <td th:text="${clientpage.full_name}"></td>
             <td></td>
             <td th:text="${clientpage.cpr}"></td>
