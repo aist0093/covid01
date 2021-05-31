@@ -42,18 +42,33 @@
         <th>Result</th>
         <th></th>
         <th>Booking date</th>
+        <th></th>
+        <th>Actions</th>
+        <th></th>
         </thead>
         <tbody>
         <tr th:each="clientpage : ${clientPageList}"th:if="${clientpage.cpr} == ${myUsername}">>
+            <form th:action="@{'/download-pdf/'}" method="post">
             <td th:text="${clientpage.full_name}"></td>
+                <input type="hidden" th:value="${clientpage.full_name}" name="fullName">
             <td></td>
             <td th:text="${clientpage.cpr}"></td>
+                <input type="hidden" th:value="${clientpage.cpr}" name="cpr">
             <td></td>
             <td th:text="${clientpage.type}"></td>
+                <input type="hidden"  th:value="${clientpage.type}" name="type">
             <td></td>
-            <td th:text="${clientpage.result}"></td>
+            <td th:text="${clientpage.result}" ></td>
+                <input type="hidden" th:value="${clientpage.result}" name="result">
             <td></td>
-            <td th:text="${clientpage.date}"></td>
+            <td th:text="${clientpage.date}" ></td>
+                <input type="hidden" th:value="${clientpage.date}" name="date">
+
+                <td><button type="submit">Download</button>
+
+
+            </td>
+            </form>
 
         </tr>
 

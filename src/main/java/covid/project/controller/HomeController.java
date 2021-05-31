@@ -1,14 +1,25 @@
 package covid.project.controller;
 
+import ch.qos.logback.classic.Logger;
+import covid.project.Print.GeneratePdf;
 import covid.project.model.*;
 import covid.project.security.IAuthenticationFacade;
 import covid.project.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.awt.print.Book;
+import java.io.*;
+import java.net.URLConnection;
 import java.util.List;
 
 @Controller
@@ -130,5 +141,33 @@ public class HomeController {
         return "redirect:/secPage";
     }
 
+   @PostMapping("/download-pdf")
+    public void downloadPDF(HttpServletResponse response,
+                            @RequestParam String fullName,
+                            @RequestParam long cpr, @RequestParam String type, @RequestParam boolean result, @RequestParam String date) throws IOException {
 
+            //Generate the PDF
+            GeneratePdf.generatePDF(fullName, cpr, type, result, date);
+
+            //Download the PDF
+            try {
+                File certificate = new File("SwabResult.pdf");
+                if (certificate.exists()) {
+                    String mimeType = URLConnection.guessContentTypeFromName(certificate.getName());
+                    if (mimeType == null) {
+                        //unknown mimetype so set the mimetype to application/octet-stream
+                        mimeType = "application/octet-stream";
+                    }
+
+                    response.setContentType(mimeType);
+                    response.setHeader("Content-Disposition", String.format("inline; filename=\"" + certificate.getName() + "\""));
+                    response.setContentLength((int) certificate.length());
+
+                    InputStream inputStream = new BufferedInputStream(new FileInputStream(certificate));
+                    FileCopyUtils.copy(inputStream, response.getOutputStream());
+                }
+            }
+            catch(IOException e){ }
+
+    }
 }
