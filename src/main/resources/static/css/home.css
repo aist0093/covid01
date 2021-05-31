@@ -66,11 +66,14 @@ th, td {
 }
 
 tr:nth-child(even) {
-    background-color: #508991
+    background-color: rgba(245, 245, 245, 0.50);
+}
+tr:nth-child(odd) {
+    background-color: rgba(214, 214, 214, 0.50);
 }
 
 th {
-    background-color: #004346;
+    background-color: #828282;
     color: aliceblue;
     font-weight: 300;
     font-family: Manrope, sans-serif;

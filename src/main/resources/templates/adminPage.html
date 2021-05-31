@@ -16,11 +16,14 @@
 <main>
   <div id="title-btn">
     <h2 id="title">ACAS Test-Center</h2>
+    <h2 id="title2">Admin</h2>
   </div>
   <div id="search">
-    <input  type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for names..">
+    <input  id="myInput" type="text"  onkeyup="searchFunction()" placeholder="Search ID..">
+  </div>
+  <div id="back">
     <form action="/logout">
-      <input id="back" type="submit" value="Log Out" />
+      <input type="submit" value="Log Out" />
     </form>
   </div>
   <table id="myTable">
@@ -28,16 +31,19 @@
       <thead>
       <tr>
         <th> Client ID </th>
+        <th> Booking ID </th>
         <th> Booking Type </th>
         <th> Date </th>
         <th> Result </th>
         <th> Actions </th>
+        <th>  </th>
 
       </tr>
       </thead>
       <tbody>
       <tr th:each="booking : ${bookingsTable}" action="/edit" method="post">
         <td th:text="${booking.clientID}"></td>
+        <td th:text="${booking.bookID}"></td>
         <td th:text="${booking.type}"></td>
         <td th:text="${booking.result}"></td>
         <td th:each="bookingDate : ${bookingDatesTable}"
@@ -64,7 +70,8 @@
 
       // Loop through all table rows, and hide those who don't match the search query
       for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
+        for(j=0; j<2;j++) {
+          td = tr[i].getElementsByTagName("td")[j];
         if (td) {
           if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
             tr[i].style.display = "";

@@ -5,24 +5,43 @@ body{
 }
 header {
     text-align: center;
-    background: rgba(147, 202, 211, 0.80);
+
 }
 h1{
-    background: rgba(147,202,211,0.90);
-    border-radius: 15px;
+    background: rgba(240, 240, 240,0.50);
+
     font-size: 1vw;
 }
 h2 {
-    background: rgba(147, 202, 211, 0.90);
+    background: rgba(240, 240, 240, 0.50);
     border-radius: 15px;
     font-size: 1vw;
 }
+a {
+    align-items: center;
+}
 #title{
-    width: 50%;
+    width: 30%;
+    align-items: center;
     text-align: center;
     font-size: 4rem;
+    position: center;
+}#title2{
+    width: 30%;
+    align-items: center;
+    text-align: center;
+    font-size: 4rem;
+    position: center;
 }
 #title-btn{
+    font-size: xx-large;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vw;
+}
+#title-btn2{
     width: 100%;
     align-items: center;
     display: flex;
@@ -31,20 +50,18 @@ h2 {
 }
 #search{
     width: 50%;
+    font-size: larger;
+    display: flex;
+    align-items: flex-start;
 }
 #myInput{
     margin-right: auto;
 }
 #back{
-    margin-left: auto;
-}
-a{
-    border: solid blue 1px;
-    text-decoration-line: none;
-    color: black;
-    width: 30%;
-    padding: 5vw;
-    text-align: center;
+    font-size: larger;
+    display: flex;
+    align-items: flex-end;
+    align-self: end;
 }
 .spaceT{
     position: relative;
@@ -54,18 +71,22 @@ table {
     width: 100%;
 }
 
-th, td {
+td {
     text-align: left;
     padding: 8px;
+    font-size: larger;
 }
 
 tr:nth-child(even) {
-    background-color: rgba(147, 202, 211, 0.90);
-
+    background-color: rgba(245, 245, 245, 0.70);
+}
+tr:nth-child(odd) {
+    background-color: rgba(214, 214, 214, 0.70);
 }
 
 th {
-    background-color: #004346;
+    font-size: x-large;
+    background-color: #545454;
     color: aliceblue;
     font-weight: 300;
     color: white;
