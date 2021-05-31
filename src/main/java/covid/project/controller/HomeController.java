@@ -38,6 +38,12 @@ public class HomeController {
         return "loginPage";
     }
 
+    @GetMapping("/error")
+    public String error(){
+         return "index";
+    }
+
+
     @GetMapping("/newBooking")
     public String newBooking(){
         return "newBooking";
@@ -60,6 +66,7 @@ public class HomeController {
         model.addAttribute("clientsTable", clientList);
         List<BookingDate> bookingDateList = bookingDateServiceInter.fetchAll();
         model.addAttribute("bookingDatesTable", bookingDateList);
+        System.out.println(authenticationFacade.getAuthentication().getAuthorities());
         return "adminPage";
 
     }
@@ -86,6 +93,7 @@ public class HomeController {
         List<ClientPage> clientPageList = clientPageServiceInter.fetchAll();
         model.addAttribute("clientPageList", clientPageList);
         model.addAttribute("myUsername", authenticationFacade.getAuthentication().getName());
+        System.out.println(authenticationFacade.getAuthentication().getAuthorities());
         return "singleClientPage";
     }
 
