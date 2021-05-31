@@ -42,6 +42,7 @@ public class HomeController {
     public String newBooking(){
         return "newBooking";
     }
+
     @PostMapping("/createAppointment")
     public String createApt(@RequestParam String aptType, @RequestParam String aptDate, @RequestParam String aptTime ){
         BookingDate bookingDate = new BookingDate(-1, aptDate, aptTime);
@@ -49,7 +50,7 @@ public class HomeController {
         Booking booking = new Booking(-1, userServiceInter.getClientID(), aptType, false, bookingDate.getDateID());
         bookingServiceInter.addBooking(booking, bookingDate);
         System.out.println(aptType);
-        return "newBooking";
+        return "redirect:/singleClientPage";
     }
 
     @GetMapping("/adminPage")
