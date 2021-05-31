@@ -36,19 +36,19 @@ public class BookingDate {
         this.dateID = dateID;
     }
 
-    public String getDate() {
+    public String getDateDate() {
         return dateDate;
     }
 
-    public void setDate(String dateDate) {
+    public void setDateDate(String dateDate) {
         this.dateDate = dateDate;
     }
 
-    public String getTime() {
+    public String getTimeTime() {
         return timeTime;
     }
 
-    public void setTime(String timeTime) {
+    public void setTimeTime(String timeTime) {
         this.timeTime = timeTime;
     }
 }

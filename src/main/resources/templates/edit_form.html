@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <title>Edit Sale</title>
+</head>
+<body>
+<div align="center">
+  <h1>Update Result</h1>
+  <br />
+  <form action="#" th:action="@{/update}" th:object="${booking}"
+        method="post">
+
+    <table border="0" cellpadding="10">
+      <tr>
+        <td>BookID:</td>
+        <td><input type="text" th:field="*{bookID}" readonly="readonly" /></td>
+      </tr>
+      <tr>
+        <td>ClientID</td>
+        <td><input type="text" th:field="*{clientID}" readonly="readonly" /></td>
+      </tr>
+      <tr>
+        <td>Result:</td>
+        <td>
+          <select id="result" name="result">
+            <option value="false">False</option>
+            <option value="true">True</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2"><button type="submit">Save</button> </td>
+      </tr>
+    </table>
+  </form>
+</div>
+</body>

@@ -27,8 +27,8 @@ public class BookingDateRepo implements BookingDateInter{
         template.update(
                 connection -> {
                     PreparedStatement ps = connection.prepareStatement(sql, new String[] {"id"});
-                    ps.setDate(1, java.sql.Date.valueOf(bookingDate.getDate()));
-                    ps.setTime(2, java.sql.Time.valueOf(bookingDate.getTime()));
+                    ps.setDate(1, java.sql.Date.valueOf(bookingDate.getDateDate()));
+                    ps.setTime(2, java.sql.Time.valueOf(bookingDate.getTimeTime()));
                     return ps;
                 }, keyHolder);
         bookingDate.setDateID(keyHolder.getKey().intValue());
@@ -54,7 +54,7 @@ public class BookingDateRepo implements BookingDateInter{
     @Override
     public void FindBookingByTime(BookingDate bookingDate){
         String sql = "SELECT DateID FROM bookingdate WHERE cast(dateDate as date) = cast(? as date) and cast(timeTime as time) = cast(? as time)";
-        int newID = template.queryForObject(sql, Integer.class, new Object[]{bookingDate.getDate(), bookingDate.getTime()});
+        int newID = template.queryForObject(sql, Integer.class, new Object[]{bookingDate.getDateDate(), bookingDate.getTimeTime()});
         bookingDate.setDateID(newID);
     }
 }

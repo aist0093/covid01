@@ -31,4 +31,7 @@ public class BookingService implements BookingServiceInter {
     public int updateResult(Booking booking) {
         return repo.updateResult(booking);
     }
+
+    @Override
+    public int delete(int bookID) {return repo.delete(bookID); }
 }

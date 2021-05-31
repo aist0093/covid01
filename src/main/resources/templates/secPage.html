@@ -13,7 +13,6 @@
 <header>
     <h1><marquee behavior="scroll" direction="left">Covid-19 Statistics Last 24 Hours, Confirmed Cases - 794, Recovered - 1,129, Deaths - 1, Quick-Test - 371,521, PCR Test - 139.159</marquee></h1>
 </header>
-<main>
     <main>
         <div id="title-btn">
             <h2 id="title">ACAS Test-Center</h2>
@@ -24,29 +23,34 @@
                 <input id="back" type="submit" value="Log Out" />
             </form>
         </div>
-<table id="myTable">
-    <tr class="header">
-        <thead>
-        <tr>
-            <th> Client ID </th>
-            <th> Booking Type </th>
-            <th> Date </th>
-            <th> Result </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="booking : ${bookingsTable}" action="/edit" method="post">
-            <td th:text="${booking.clientID}"></td>
-            <td th:text="${booking.type}"></td>
-            <td th:each="bookingDate : ${bookingDatesTable}"
-                th:if="(${bookingDate.dateID} == ${booking.dateID})"
-                th:text="${bookingDate.date +' '+ bookingDate.time}">
-            </td>
-            <td><input type="text" name="name" th:value="${booking.result}"><td/>
-            <td><input type="submit" name="update" value="Update"><td/>
-        </tr>
-        </tbody>
-    </table>
+    <table id="myTable">
+        <tr class="header">
+            <thead>
+            <tr>
+                <th> Client ID </th>
+                <th> Booking Type </th>
+                <th> Date </th>
+                <th> Result </th>
+                <th> Actions </th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="booking : ${bookingsTable}" action="/edit" method="post">
+                <td th:text="${booking.clientID}"></td>
+                <td th:text="${booking.type}"></td>
+                <td th:text="${booking.result}"></td>
+                <td th:each="bookingDate : ${bookingDatesTable}"
+                    th:if="(${bookingDate.dateID} == ${booking.dateID})"
+                    th:text="${bookingDate.getDateDate() + ' ' + bookingDate.getTimeTime()}">
+
+                </td>
+
+                <td><a  type="submit" th:href="@{'/edit/' + ${booking.bookID}}">Edit</a></td>
+
+            </tr>
+            </tbody>
+        </table>
 
 <script>
     function searchFunction() {
@@ -70,5 +74,8 @@
         }
     }
 </script>
+
+</main>
 </body>
 </html>
+

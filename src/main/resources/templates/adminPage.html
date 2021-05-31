@@ -15,61 +15,67 @@
 </header>
 <main>
   <div id="title-btn">
-        <h2 id="title">ACAS Test-Center</h2>
-      </div>
+    <h2 id="title">ACAS Test-Center</h2>
+  </div>
   <div id="search">
     <input  type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for names..">
     <form action="/logout">
       <input id="back" type="submit" value="Log Out" />
     </form>
   </div>
-
-<script>
-  function searchFunction() {
-    // Declare variables
-    var input, filter, table, tr, td, i;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("myTable");
-    tr = table.getElementsByTagName("tr");
-
-    // Loop through all table rows, and hide those who don't match the search query
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[0];
-      if (td) {
-        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      }
-    }
-  }
-</script>
-  <div class="spaceT">
-  <table>
-    <tr>
+  <table id="myTable">
+    <tr class="header">
       <thead>
       <tr>
         <th> Client ID </th>
         <th> Booking Type </th>
-        <th> Result </th>
         <th> Date </th>
+        <th> Result </th>
+        <th> Actions </th>
+
       </tr>
       </thead>
       <tbody>
-      <tr th:each="booking : ${bookingsTable}">
+      <tr th:each="booking : ${bookingsTable}" action="/edit" method="post">
         <td th:text="${booking.clientID}"></td>
         <td th:text="${booking.type}"></td>
         <td th:text="${booking.result}"></td>
         <td th:each="bookingDate : ${bookingDatesTable}"
             th:if="(${bookingDate.dateID} == ${booking.dateID})"
-            th:text="${bookingDate.date +' '+ bookingDate.time}">
+            th:text="${bookingDate.getDateDate() + ' ' + bookingDate.getTimeTime()}">
+
         </td>
-        </tr>
+
+        <td><a  type="submit" th:href="@{'/edit/' + ${booking.bookID}}">Edit</a></td>
+        <td><a type="submit" th:href="@{'/delete/' + ${booking.bookID}}">Delete</a></td>
+
+      </tr>
       </tbody>
   </table>
-  </div>
+
+  <script>
+    function searchFunction() {
+      // Declare variables
+      var input, filter, table, tr, td, i;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+  </script>
+
 </main>
 </body>
 </html>

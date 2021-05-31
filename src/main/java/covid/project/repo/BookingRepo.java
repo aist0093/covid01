@@ -23,7 +23,7 @@ public class BookingRepo implements BookingInter{
     @Override
 
     public int addBooking(Booking booking, BookingDate bookingDate) {
-        System.out.println(bookingDate.getTime());
+        System.out.println(bookingDate.getTimeTime());
         String sql = "INSERT INTO booking ( Type, Result, DateID, ClientID) VALUES (?,?,(SELECT DateID FROM bookingdate WHERE cast(dateDate as date) = cast(? as date) and cast(timeTime as time) = cast(? as time)),?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbc.update(
@@ -31,8 +31,8 @@ public class BookingRepo implements BookingInter{
                     PreparedStatement ps = connection.prepareStatement(sql, new String[] {"id"});
                     ps.setString(1, booking.getType());
                     ps.setBoolean(2, booking.isResult());
-                    ps.setDate(3, java.sql.Date.valueOf(bookingDate.getDate()));
-                    ps.setTime(4, java.sql.Time.valueOf(LocalTime.parse(bookingDate.getTime())));
+                    ps.setDate(3, java.sql.Date.valueOf(bookingDate.getDateDate()));
+                    ps.setTime(4, java.sql.Time.valueOf(LocalTime.parse(bookingDate.getTimeTime())));
                     ps.setInt(5, booking.getClientID());
                     return ps;
                 }, keyHolder);
@@ -59,5 +59,9 @@ public class BookingRepo implements BookingInter{
     public int updateResult(Booking booking) {
         String sql = "Update booking SET Result = ? WHERE BookID = ?";
         return jdbc.update(sql, booking.isResult(), booking.getBookID());
+    }
+    public int delete(int bookID){
+        String sql = "DELETE FROM booking WHERE BookID=?";
+        return jdbc.update(sql, bookID);
     }
 }

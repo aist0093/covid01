@@ -11,6 +11,7 @@ import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.awt.print.Book;
@@ -106,6 +107,24 @@ public class HomeController {
         List<User> usersPageList = userServiceInter.fetchAll();
         model.addAttribute("usersPageList", usersPageList);
         return "allUsers";
+    }
+
+    @RequestMapping("/edit/{id}")
+    public ModelAndView showEditForm(@PathVariable(name = "id") int id) {
+        ModelAndView mav = new ModelAndView("edit_form");
+        Booking booking = bookingServiceInter.findBookingById(id);
+        mav.addObject("booking", booking);
+        return mav;
+    }
+    @RequestMapping("/delete/{id}")
+    public String delete(@PathVariable(name = "id") int id) {
+        bookingServiceInter.delete(id);
+        return "redirect:/adminPage";
+    }
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String update(@ModelAttribute("booking") Booking booking) {
+        bookingServiceInter.updateResult(booking);
+        return "redirect:/secPage";
     }
 
 
