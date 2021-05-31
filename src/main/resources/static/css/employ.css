@@ -39,10 +39,15 @@ h2 {
     margin-left: auto;
 }
 a{
+    border: solid blue 1px;
+    text-decoration-line: none;
+    color: black;
+    width: 30%;
+    padding: 5vw;
+    text-align: center;
 }
 .spaceT{
     position: relative;
-    width: 100%;
 }
 table {
     border-collapse: collapse;
