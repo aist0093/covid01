@@ -32,32 +32,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         ;
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        // Set your configuration on the auth object
-        auth.inMemoryAuthentication()
-                .withUser("secretary")
-                .password("secretary")
-                .roles("SECRETARY")
-                .and()
-                .withUser("admin")
-                .password("admin")
-                .roles("ADMIN");
-    }
-    @Bean
-    public PasswordEncoder getPasswordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
-    }
-
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/adminPage").hasRole("ADMIN")
-                .antMatchers("/secPage").hasRole("SECRETARY")
+                .antMatchers("/adminPage").authenticated()
+                .antMatchers("/secPage").authenticated()
                 .antMatchers("/loginPage").authenticated()
-                .antMatchers("/usersPage").authenticated()
                 .antMatchers("/singleClientPage").authenticated()
                 .and()
                 .formLogin().permitAll()
