@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>now logged in</title>
+    <title>Client Homepage</title>
     <link href="../static/css/employ.cc" type="text/css" th:href="@{http://localhost:8080/css/employ.css}" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -22,53 +22,60 @@
             <form action="/logout">
                 <input type="submit" value="LOG OUT" />
             </form>
-            <form action="/singleClientPage">
-                <input type="submit" value="Client Information" />
+            <form action="/usersPage">
+                <input type="submit" value="User Information" />
             </form>
         </div>
 
     <section id="title-btn">
-        <a  href=""><h2>Book a Covid Test</h2></a>
-        <a  href=""><h2>Book a Covid Vaccine</h2></a>
+        <a  href="/newBooking"><h2>Book a Covid Test</h2></a>
+        <a  href="/newBooking"><h2>Book a Covid Vaccine</h2></a>
     </section>
-<table>
-    <thead>
-    <th>Full name</th>
-    <th></th>
-    <th>CPR</th>
-    <th></th>
-    <th>Type</th>
-    <th></th>
-    <th>Result</th>
-    <th></th>
-    <th>Booking date</th>
-    </thead>
-    <tbody>
-    <tr th:each="booking : ${bookingsTable}" >
-        <td th:each="client : ${clientsTable} "
-            th:if="(${client.clientID} == ${booking.clientID})">
-            <p th:each="clientInfo : ${clientInfosTable}"
-               th:if="(${clientInfo.cpr} == ${client.cpr})"
-               th:text="${clientInfo.first_Name + ' ' + clientInfo.last_Name}"
-            >
-            <p/>
-        </td>
-        <td></td>
-        <td th:each="client : ${clientsTable}"
-            th:if="(${client.clientID} == ${booking.clientID})"
-            th:text="${client.cpr}">
-        </td>
-        <td></td>
-        <td th:text="${booking.type}"></td>
-        <td></td>
-        <td th:text="${booking.result}"></td>
-        <td></td>
-        <td th:each="bookingDate : ${bookingDatesTable}"
-            th:if="(${bookingDate.dateID} == ${booking.dateID})"
-            th:text="${bookingDate.date +' '+ bookingDate.time}">
-        </td>
-    </tr>
-    </tbody>
-</table>
+    <table>
+        <thead>
+        <th>Full name</th>
+        <th></th>
+        <th>CPR</th>
+        <th></th>
+        <th>Type</th>
+        <th></th>
+        <th>Result</th>
+        <th></th>
+        <th>Booking date</th>
+        </thead>
+        <tbody>
+        <tr th:each="booking : ${bookingsTable}" >
+
+            <td th:each="client : ${clientsTable} "
+                th:if="(${client.clientID} == ${booking.clientID})">
+                <p th:each="clientInfo : ${clientInfosTable}"
+                   th:if="(${clientInfo.cpr} == ${client.cpr})"
+                   th:text="${clientInfo.first_Name + ' ' + clientInfo.last_Name}"
+                >
+                <p/>
+
+            </td>
+            <td></td>
+
+            <td th:each="client : ${clientsTable}"
+                th:if="(${client.clientID} == ${booking.clientID})"
+                th:text="${client.cpr}">
+            </td>
+            <td></td>
+            <td th:text="${booking.type}"></td>
+            <td></td>
+
+            <td th:text="${booking.result}"></td>
+            <td></td>
+
+            <td th:each="bookingDate : ${bookingDatesTable}"
+                th:if="(${bookingDate.dateID} == ${booking.dateID})"
+                th:text="${bookingDate.date +' '+ bookingDate.time}">
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</main>
 </body>
 </html>

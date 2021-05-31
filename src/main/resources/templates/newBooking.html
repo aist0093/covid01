@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking</title>
+    <link href="../static/css/employ.cc" type="text/css" th:href="@{http://localhost:8080/css/employ.css}" rel="stylesheet">
+
+</head>
+<body>
+<form th:action="@{/createAppointment}" method="post">
+    <select name="aptType">
+        <option value="test">Test</option>
+        <option value="vaccine">Vaccine</option>
+
+    </select>
+    <input type="date" name="aptDate"/>
+    <input type="time" name="aptTime"/>
+
+    <button type="submit">Book appointment</button>
+</form>
+</body>
+</html>

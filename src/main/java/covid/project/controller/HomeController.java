@@ -1,20 +1,14 @@
 package covid.project.controller;
 
-import ch.qos.logback.classic.Logger;
 import covid.project.model.*;
 import covid.project.security.IAuthenticationFacade;
 import covid.project.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import java.awt.print.Book;
 import java.util.List;
 
 @Controller
@@ -44,9 +38,9 @@ public class HomeController {
         return "loginPage";
     }
 
-    @GetMapping("/whateverPage")
-    public String whateverPage(){
-        return "whateverPage";
+    @GetMapping("/newBooking")
+    public String newBooking(){
+        return "newBooking";
     }
     @PostMapping("/createAppointment")
     public String createApt(@RequestParam String aptType, @RequestParam String aptDate, @RequestParam String aptTime ){
@@ -55,7 +49,7 @@ public class HomeController {
         Booking booking = new Booking(-1, userServiceInter.getClientID(), aptType, false, bookingDate.getDateID());
         bookingServiceInter.addBooking(booking, bookingDate);
         System.out.println(aptType);
-        return "whateverPage";
+        return "newBooking";
     }
 
     @GetMapping("/adminPage")
