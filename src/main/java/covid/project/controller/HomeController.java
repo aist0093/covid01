@@ -104,7 +104,6 @@ public class HomeController {
         List<ClientPage> clientPageList = clientPageServiceInter.fetchAll();
         model.addAttribute("clientPageList", clientPageList);
         model.addAttribute("myUsername", authenticationFacade.getAuthentication().getName());
-        System.out.println(authenticationFacade.getAuthentication().getAuthorities());
         return "singleClientPage";
     }
 

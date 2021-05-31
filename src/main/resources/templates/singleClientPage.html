@@ -47,7 +47,7 @@
         <th></th>
         </thead>
         <tbody>
-        <tr th:each="clientpage : ${clientPageList}"th:if="${clientpage.cpr} == ${myUsername}">>
+        <tr th:each="clientpage : ${clientPageList}"th:if="${clientpage.cpr} == ${myUsername}">
             <form th:action="@{'/download-pdf/'}" method="post">
             <td th:text="${clientpage.full_name}"></td>
                 <input type="hidden" th:value="${clientpage.full_name}" name="fullName">
