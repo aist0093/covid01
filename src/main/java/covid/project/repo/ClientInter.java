@@ -1,7 +1,6 @@
 package covid.project.repo;
 
 import covid.project.model.Client;
-import covid.project.model.ClientInfo;
 
 import java.util.List;
 

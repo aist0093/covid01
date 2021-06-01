@@ -9,6 +9,7 @@ public class ClientPage {
     private String date;
 
 
+    // Constructors
 
     public ClientPage(String full_name, long cpr, String type, boolean result, String date) {
         this.full_name = full_name;
@@ -20,6 +21,8 @@ public class ClientPage {
 
     public ClientPage() {
     }
+
+    // Getters and Setters
 
     public String getFull_name() {
         return full_name;

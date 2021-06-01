@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @Repository
-public class ClientPageRepo implements ClientPageInter{
+public class ClientPageRepo implements ClientPageInter {
 
     @Autowired
     JdbcTemplate jdbc;

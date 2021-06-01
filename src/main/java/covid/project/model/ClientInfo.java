@@ -11,6 +11,9 @@ public class ClientInfo {
     private String first_name;
     private String last_name;
 
+
+    // Constructors
+
     public ClientInfo() {
     }
 
@@ -19,6 +22,9 @@ public class ClientInfo {
         this.first_name = first_name;
         this.last_name = last_name;
     }
+
+
+    // Getters and Setters
 
     @javax.persistence.Id
     public long getCpr() { return cpr; }

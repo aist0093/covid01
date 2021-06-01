@@ -2,7 +2,6 @@ package covid.project.repo;
 
 import covid.project.model.Booking;
 import covid.project.model.BookingDate;
-import covid.project.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -16,10 +15,11 @@ import java.time.LocalTime;
 import java.util.List;
 
 @Repository
-public class BookingRepo implements BookingInter{
+public class BookingRepo implements BookingInter {
 
     @Autowired
     JdbcTemplate jdbc;
+
     @Override
 
     public int addBooking(Booking booking, BookingDate bookingDate) {
@@ -28,7 +28,7 @@ public class BookingRepo implements BookingInter{
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbc.update(
                 connection -> {
-                    PreparedStatement ps = connection.prepareStatement(sql, new String[] {"id"});
+                    PreparedStatement ps = connection.prepareStatement(sql, new String[]{"id"});
                     ps.setString(1, booking.getType());
                     ps.setBoolean(2, booking.isResult());
                     ps.setDate(3, java.sql.Date.valueOf(bookingDate.getDateDate()));
@@ -49,7 +49,7 @@ public class BookingRepo implements BookingInter{
     }
 
     @Override
-    public Booking findBookingById(int bookID){
+    public Booking findBookingById(int bookID) {
         String sql = "SELECT * FROM booking WHERE BookID = ?";
         RowMapper<Booking> rowMapper = new BeanPropertyRowMapper<>(Booking.class);
         Booking booking = jdbc.queryForObject(sql, rowMapper, bookID);
@@ -60,7 +60,8 @@ public class BookingRepo implements BookingInter{
         String sql = "Update booking SET Result = ? WHERE BookID = ?";
         return jdbc.update(sql, booking.isResult(), booking.getBookID());
     }
-    public int delete(int bookID){
+
+    public int delete(int bookID) {
         String sql = "DELETE FROM booking WHERE BookID=?";
         return jdbc.update(sql, bookID);
     }

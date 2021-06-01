@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ClientPageService implements ClientPageServiceInter{
+public class ClientPageService implements ClientPageServiceInter {
     @Autowired
     ClientPageRepo repo;
+
     @Override
     public List<ClientPage> fetchAll() {
         return repo.fetchAll();

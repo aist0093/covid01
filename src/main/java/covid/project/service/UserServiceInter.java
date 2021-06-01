@@ -10,6 +10,7 @@ public interface UserServiceInter {
     User findUserByUsername(String username);
 
     List<User> fetchAll();
-    public int getClientID();
+
+    int getClientID();
 
 }

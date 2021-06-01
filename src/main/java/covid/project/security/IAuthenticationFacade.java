@@ -5,14 +5,15 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 public interface IAuthenticationFacade {
-        Authentication getAuthentication();
-    }
-    @Component
-    class AuthenticationFacade implements IAuthenticationFacade {
+    Authentication getAuthentication();
+}
 
-        @Override
-        public Authentication getAuthentication() {
-            return SecurityContextHolder.getContext().getAuthentication();
-        }
+@Component
+class AuthenticationFacade implements IAuthenticationFacade {
+
+    @Override
+    public Authentication getAuthentication() {
+        return SecurityContextHolder.getContext().getAuthentication();
     }
+}
 

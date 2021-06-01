@@ -11,6 +11,9 @@ public class Client {
     private boolean vac_status;
     private boolean inf_status;
 
+
+    // Constructors
+
     public Client() { }
 
     public Client(int clientID, long cpr, boolean vac_status, boolean inf_status) {
@@ -19,6 +22,9 @@ public class Client {
         this.vac_status = vac_status;
         this.inf_status = inf_status;
     }
+
+
+    // Getters and Setters
 
     @javax.persistence.Id
     public int getClientID() { return clientID; }

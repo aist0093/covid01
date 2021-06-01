@@ -7,45 +7,38 @@
 </head>
 <body>
 <main>
-    <div id="title-btn">
+    <div>
+        <h2 id="title">ACAS Test Center</h2>
+        <h2 id="title2" >Client User Information</h2>
         <div id="buttons">
             <form action="/logout">
                 <input type="submit" value="LOG OUT" />
             </form>
             <form action="/singleClientPage">
-                <input type="submit" value="Client Information" />
+                <input type="submit" value="Return" />
             </form>
         </div>
-        <h1 id="title">ACAS Test Center</h1>
+
     </div>
 
     <table>
         <thead>
         <th>User ID</th>
-        <th></th>
         <th>Encrypted Password</th>
-        <th></th>
         <th>Role</th>
-        <th></th>
         <th>Enabled</th>
-        <th></th>
         <th>Username</th>
         </thead>
         <tbody>
 
         <tr th:each="usersPage: ${usersPageList}" th:if="${usersPage.username} == ${myUsername}">
             <td th:text="${usersPage.user_id}"></td>
-            <td></td>
             <td th:text="${usersPage.password}"></td>
-            <td></td>
             <td th:text="${usersPage.role}"></td>
-            <td></td>
             <td th:text="${usersPage.enabled}"></td>
-            <td></td>
             <td th:text="${usersPage.username}"></td>
 
         </tr>
-
         </tbody>
     </table>
 </main>

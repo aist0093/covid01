@@ -2,6 +2,7 @@ package covid.project.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+
 @Entity
 public class User {
     @Id
@@ -10,6 +11,9 @@ public class User {
     private String role;
     private boolean enabled;
     private String username;
+
+
+    // Constructors
 
     public User() {}
 
@@ -21,6 +25,8 @@ public class User {
         this.username = username;
     }
 
+
+    // Getters and Setters
 
     public int getUser_id() {
         return user_id;

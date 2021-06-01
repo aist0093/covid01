@@ -1,6 +1,5 @@
 package covid.project.repo;
 
-import covid.project.model.Booking;
 import covid.project.model.User;
 import covid.project.security.IAuthenticationFacade;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +9,9 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
 @Repository
-public class UserRepo implements UserInter{
+public class UserRepo implements UserInter {
 
     @Autowired
     JdbcTemplate jdbc;
@@ -20,7 +20,7 @@ public class UserRepo implements UserInter{
     IAuthenticationFacade auth;
 
     @Override
-    public User findUserByUsername(String username){
+    public User findUserByUsername(String username) {
         String sql = "SELECT * FROM users WHERE username = ?";
         RowMapper<User> rowMapper = new BeanPropertyRowMapper<>(User.class);
         User user = jdbc.queryForObject(sql, rowMapper, username);
@@ -38,6 +38,6 @@ public class UserRepo implements UserInter{
     public int getClientID() {
         String sql = "SELECT ClientID from client where cpr = ?";
         return jdbc.queryForObject(
-                sql, Integer.class, new Object[] {auth.getAuthentication().getName()});
+                sql, Integer.class, new Object[]{auth.getAuthentication().getName()});
     }
 }

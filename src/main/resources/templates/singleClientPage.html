@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Client Homepage</title>
-    <link href="../static/css/employ.cc" type="text/css" th:href="@{http://localhost:8080/css/employ.css}" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="../static/css/employ.cc" rel="stylesheet" th:href="@{http://localhost:8080/css/employ.css}" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 <header>
-    <h1><marquee behavior="scroll" direction="left">Covid-19 Statistics Last 24 Hours, Confirmed Cases - 794, Recovered - 1,129, Deaths - 1, Quick-Test - 371,521, PCR Test - 139.159</marquee></h1>
+    <h1>
+        <marquee behavior="scroll" direction="left">Covid-19 Statistics Last 24 Hours, Confirmed Cases - 794, Recovered
+            - 1,129, Deaths - 1, Quick-Test - 371,521, PCR Test - 139.159
+        </marquee>
+    </h1>
 </header>
 <main>
     <div>
@@ -19,64 +23,47 @@
     </div>
 
     <div>
-            <form action="/logout">
-                <input type="submit" value="LOG OUT" />
-            </form>
-            <form action="/usersPage">
-                <input type="submit" value="User Information" />
-            </form>
-        </div>
+        <form action="/logout">
+            <input type="submit" value="LOG OUT"/>
+        </form>
+        <form action="/usersPage">
+            <input type="submit" value="User Information"/>
+        </form>
+    </div>
 
     <section id="title-btn">
-        <a  href="/newBooking"><h2>Book a Covid Test or Vaccine</h2></a>
+        <a href="/newBooking"><h2>Book a Covid Test or Vaccine</h2></a>
     </section>
 
     <table>
         <thead>
         <th>Full name</th>
-        <th></th>
         <th>CPR</th>
-        <th></th>
         <th>Type</th>
-        <th></th>
         <th>Result</th>
-        <th></th>
         <th>Booking date</th>
-        <th></th>
-        <th>Actions</th>
-        <th></th>
+        <th>Print</th>
         </thead>
         <tbody>
-        <tr th:each="clientpage : ${clientPageList}"th:if="${clientpage.cpr} == ${myUsername}">
-            <form th:action="@{'/download-pdf/'}" method="post">
-            <td th:text="${clientpage.full_name}"></td>
-                <input type="hidden" th:value="${clientpage.full_name}" name="fullName">
-            <td></td>
-            <td th:text="${clientpage.cpr}"></td>
-                <input type="hidden" th:value="${clientpage.cpr}" name="cpr">
-            <td></td>
-            <td th:text="${clientpage.type}"></td>
-                <input type="hidden"  th:value="${clientpage.type}" name="type">
-            <td></td>
-            <td th:text="${clientpage.result}" ></td>
-                <input type="hidden" th:value="${clientpage.result}" name="result">
-            <td></td>
-            <td th:text="${clientpage.date}" ></td>
-                <input type="hidden" th:value="${clientpage.date}" name="date">
-
-                <td><button type="submit">Download</button>
-
-
-            </td>
+        <tr th:each="clientpage : ${clientPageList}" th:if="${clientpage.cpr} == ${myUsername}">
+            <form method="post" th:action="@{'/download-pdf/'}">
+                <td th:text="${clientpage.full_name}"></td>
+                <input name="fullName" th:value="${clientpage.full_name}" type="hidden">
+                <td th:text="${clientpage.cpr}"></td>
+                <input name="cpr" th:value="${clientpage.cpr}" type="hidden">
+                <td th:text="${clientpage.type}"></td>
+                <input name="type" th:value="${clientpage.type}" type="hidden">
+                <td th:text="${clientpage.result}"></td>
+                <input name="result" th:value="${clientpage.result}" type="hidden">
+                <td th:text="${clientpage.date}"></td>
+                <input name="date" th:value="${clientpage.date}" type="hidden">
+                <td>
+                    <button type="submit">COVIDPass</button>
+                </td>
             </form>
-
         </tr>
-
         </tbody>
     </table>
-
-
-
 </main>
 </body>
 </html>

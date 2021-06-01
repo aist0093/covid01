@@ -2,7 +2,6 @@ package covid.project.service;
 
 import covid.project.model.Booking;
 import covid.project.model.BookingDate;
-import covid.project.model.Client;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -10,9 +9,13 @@ import java.util.List;
 @Component
 public interface BookingServiceInter {
 
-    public int addBooking(Booking booking, BookingDate bookingDate);
-    public List<Booking> fetchAll();
-    public Booking findBookingById(int bookID);
-    public int updateResult(Booking booking);
-    public int delete(int bookID);
+    int addBooking(Booking booking, BookingDate bookingDate);
+
+    List<Booking> fetchAll();
+
+    Booking findBookingById(int bookID);
+
+    int updateResult(Booking booking);
+
+    int delete(int bookID);
 }
