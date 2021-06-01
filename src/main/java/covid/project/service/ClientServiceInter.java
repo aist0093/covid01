@@ -7,9 +7,7 @@ import java.util.List;
 
 @Component
 public interface ClientServiceInter {
-    long addClient(Client client);
 
     List<Client> fetchAll();
 
-    Client findClientByID(long clientID);
 }

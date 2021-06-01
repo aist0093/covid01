@@ -7,9 +7,7 @@ import java.util.List;
 
 @Component
 public interface ClientInfoServiceInter {
-    long addClientInfo(ClientInfo clientInfo);
 
     List<ClientInfo> fetchAll();
 
-    ClientInfo findClientInfoByID(long cpr);
 }

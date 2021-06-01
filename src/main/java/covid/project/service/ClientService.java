@@ -13,17 +13,8 @@ public class ClientService implements ClientServiceInter {
     ClientRepo clientRepo;
 
     @Override
-    public long addClient(Client client) {
-        return clientRepo.addClient(client);
-    }
-
-    @Override
     public List<Client> fetchAll() {
         return clientRepo.fetchAll();
     }
 
-    @Override
-    public Client findClientByID(long clientID) {
-        return clientRepo.findClientByID(clientID);
-    }
 }

@@ -13,18 +13,8 @@ public class BookingDateService implements BookingDateServiceInter {
     BookingDateRepo bookingDateRepo;
 
     @Override
-    public int addBookingDate(BookingDate bookingDate) {
-        return bookingDateRepo.addBookingDate(bookingDate);
-    }
-
-    @Override
     public List<BookingDate> fetchAll() {
         return bookingDateRepo.fetchAll();
-    }
-
-    @Override
-    public BookingDate findBookingDate(int dateID) {
-        return bookingDateRepo.findBookingDateById(dateID);
     }
 
     @Override

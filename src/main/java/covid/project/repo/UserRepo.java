@@ -19,13 +19,6 @@ public class UserRepo implements UserInter {
     @Autowired
     IAuthenticationFacade auth;
 
-    @Override
-    public User findUserByUsername(String username) {
-        String sql = "SELECT * FROM users WHERE username = ?";
-        RowMapper<User> rowMapper = new BeanPropertyRowMapper<>(User.class);
-        User user = jdbc.queryForObject(sql, rowMapper, username);
-        return user;
-    }
 
     @Override
     public List<User> fetchAll() {

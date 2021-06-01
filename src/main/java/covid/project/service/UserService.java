@@ -13,11 +13,6 @@ public class UserService implements UserServiceInter {
     UserRepo userRepo;
 
     @Override
-    public User findUserByUsername(String username) {
-        return userRepo.findUserByUsername(username);
-    }
-
-    @Override
     public List<User> fetchAll() {
         return userRepo.fetchAll();
     }

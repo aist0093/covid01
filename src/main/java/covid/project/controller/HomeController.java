@@ -119,7 +119,12 @@ public class HomeController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(@ModelAttribute("booking") Booking booking) {
         bookingServiceInter.updateResult(booking);
-        return "redirect:/secPage";
+        String s = authenticationFacade.getAuthentication().getName();
+        if (s.equals("1111111111")) {
+            return "redirect:/adminPage";
+        } else {
+            return "redirect:/secPage";
+        }
     }
 
     @PostMapping("/download-pdf")

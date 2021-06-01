@@ -7,7 +7,6 @@ import java.util.List;
 
 @Component
 public interface UserServiceInter {
-    User findUserByUsername(String username);
 
     List<User> fetchAll();
 

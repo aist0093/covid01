@@ -8,11 +8,8 @@ import java.util.List;
 
 @Component
 public interface BookingDateServiceInter {
-    int addBookingDate(BookingDate bookingDate);
 
     List<BookingDate> fetchAll();
-
-    BookingDate findBookingDate(int dateID);
 
     void FindBookingByTime(BookingDate bookingDate);
 }

@@ -16,23 +16,10 @@ public class ClientInfoRepo implements ClientInfoInter {
     JdbcTemplate jdbc;
 
     @Override
-    public long addClientInfo(ClientInfo clientInfo) {
-        String sql = "INSERT INTO clientinfo VALUES(?,?,?)";
-        return jdbc.update(sql, 1, 1, 1);
-    }
-
-    @Override
     public List<ClientInfo> fetchAll() {
         String sql = "SELECT * FROM clientinfo";
         RowMapper<ClientInfo> rowMapper = new BeanPropertyRowMapper<>(ClientInfo.class);
         return jdbc.query(sql, rowMapper);
-    }
-
-    @Override
-    public ClientInfo findClientInfoByID(long cpr) {
-        String sql = "SELECT * FROM clientinfo WHERE cpr = ?";
-        RowMapper<ClientInfo> rowMapper = new BeanPropertyRowMapper<>(ClientInfo.class);
-        return jdbc.queryForObject(sql, rowMapper, cpr);
     }
 
 }

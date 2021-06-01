@@ -13,18 +13,9 @@ public class ClientInfoService implements ClientInfoServiceInter {
     @Autowired
     ClientInfoRepo clientInfoRepo;
 
-    @Override
-    public long addClientInfo(ClientInfo clientInfo) {
-        return clientInfoRepo.addClientInfo(clientInfo);
-    }
 
     @Override
     public List<ClientInfo> fetchAll() {
         return clientInfoRepo.fetchAll();
-    }
-
-    @Override
-    public ClientInfo findClientInfoByID(long cpr) {
-        return clientInfoRepo.findClientInfoByID(cpr);
     }
 }
