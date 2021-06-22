@@ -9,7 +9,5 @@ import java.util.List;
 public interface UserServiceInter {
 
     List<User> fetchAll();
-
     int getClientID();
-
 }

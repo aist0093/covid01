@@ -3,29 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Booking</title>
-    <link href="../static/css/employ.cc" type="text/css" th:href="@{http://localhost:8080/css/employ.css}"
-          rel="stylesheet">
+    <link href="../static/css/employ.cc" type="text/css" th:href="@{http://localhost:8080/css/employ.css}" rel="stylesheet">
 
 </head>
 <body>
 <div id="title-btn">
-    <form th:action="@{/createAppointment}" method="post">
-        <h5>Booking Type</h5>
-        <select name="aptType">
-            <option value="test">Test</option>
-            <option value="vaccine">Vaccine</option>
+<form th:action="@{/createAppointment}" method="post">
+    <h5>Booking Type</h5>
+    <select name="aptType">
+        <option value="test">Test</option>
+        <option value="vaccine">Vaccine</option>
 
-        </select>
-        <h5>Select Date</h5>
-        <h4>Available dates: 01.06.2021 - 01.07.2021 (Weekdays only)</h4>
-        <input type="date" name="aptDate"/>
-        <h5>Select Time</h5>
-        <h4>Available times: 10.00, 11.00, 12.00, 13.00</h4>
-        <input type="time" name="aptTime"/>
-        <h4></h4>
-        <button class="btn btn-outline-dark" type="submit">Book appointment</button>
+    </select>
+    <h5>Select Date</h5>
+    <label><h4>Available dates: 01.06.2021 - 16.07.2021 </h4>
+        <input type="date" name="aptDate" min="2021-06-23" max="2021-07-16" >
+        <span class="validity"></span>
+    </label>
+    <h5>Select Time</h5>
+    <h4> <label for="aptTime" >Available times: 10.00, 11.00, 12.00, 13.00</label></h4>
+    <input id="aptTime" type="time" name="aptTime" min="10:00" max="13:00">
+    <span class="validity"></span>
+    <h4></h4>
+    <button class="btn btn-outline-dark" type="submit">Book appointment</button>
 
-    </form>
+</form>
 </div>
 </body>
 </html>
