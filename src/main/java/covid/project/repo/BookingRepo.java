@@ -23,7 +23,6 @@ public class BookingRepo implements BookingInter {
     @Override
 
     public int addBooking(Booking booking, BookingDate bookingDate) {
-        System.out.println(bookingDate.getTimeTime());
         String sql = "INSERT INTO booking ( Type, Result, DateID, ClientID) VALUES (?,?,(SELECT DateID FROM bookingdate WHERE cast(dateDate as date) = cast(? as date) and cast(timeTime as time) = cast(? as time)),?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbc.update(

@@ -71,7 +71,6 @@ public class HomeController {
         List<BookingDate> bookingDateList = bookingDateServiceInter.fetchAll();
         model.addAttribute("bookingDatesTable", bookingDateList);
         return "adminPage";
-
     }
 
     @GetMapping("/secPage")
@@ -154,6 +153,5 @@ public class HomeController {
             }
         } catch (IOException e) {
         }
-
     }
 }
