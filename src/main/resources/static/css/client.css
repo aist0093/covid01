@@ -16,21 +16,8 @@ h2 {
     border-radius: 15px;
     font-size: 1vw;
 }
-h5 {
-    background: rgba(240, 240, 240, 0.50);
-    border-radius: 10px;
-    text-align: center;
-    font-size: large;
-}
-h4 {
-    background: rgba(240, 240, 240, 0.70);
-    border-radius: 5px;
-    font-size: medium;
-    font-weight: normal;
-}
 a {
     align-items: center;
-
 }
 #title{
     width: 30%;
@@ -39,12 +26,12 @@ a {
     font-size: 4rem;
     position: center;
 }#title2{
-    width: 30%;
-    align-items: center;
-    text-align: center;
-    font-size: 4rem;
-    position: center;
-}
+     width: 30%;
+     align-items: center;
+     text-align: center;
+     font-size: 4rem;
+     position: center;
+ }
 #title-btn{
     font-size: xx-large;
     width: 100%;
